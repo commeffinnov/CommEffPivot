@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
+		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
+		650876D717F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
+		650876DD17F6420400E3C4F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 650876DB17F6420400E3C4F4 /* InfoPlist.strings */; };
+		650876DF17F6420400E3C4F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876DE17F6420400E3C4F4 /* main.m */; };
+		650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876E217F6420400E3C4F4 /* LocColAppDelegate.m */; };
+		650876E617F6420400E3C4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650876E417F6420400E3C4F4 /* Main.storyboard */; };
+		650876E917F6420400E3C4F4 /* LocColViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876E817F6420400E3C4F4 /* LocColViewController.m */; };
+		650876EB17F6420400E3C4F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650876EA17F6420400E3C4F4 /* Images.xcassets */; };
+		650876F217F6420400E3C4F4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876F117F6420400E3C4F4 /* XCTest.framework */; };
+		650876F317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
+		650876F417F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
+		650876FC17F6420400E3C4F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 650876FA17F6420400E3C4F4 /* InfoPlist.strings */; };
+		650876FE17F6420400E3C4F4 /* CommEffPivotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		650876F517F6420400E3C4F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650876C717F6420400E3C4F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 650876CE17F6420400E3C4F4;
+			remoteInfo = CommEffPivot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		650876D417F6420400E3C4F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		650876D617F6420400E3C4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		650876DA17F6420400E3C4F4 /* CommEffPivot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CommEffPivot-Info.plist"; sourceTree = "<group>"; };
+		650876DC17F6420400E3C4F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		650876DE17F6420400E3C4F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		650876E017F6420400E3C4F4 /* CommEffPivot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommEffPivot-Prefix.pch"; sourceTree = "<group>"; };
+		650876E117F6420400E3C4F4 /* LocColAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocColAppDelegate.h; sourceTree = "<group>"; };
+		650876E217F6420400E3C4F4 /* LocColAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocColAppDelegate.m; sourceTree = "<group>"; };
+		650876E517F6420400E3C4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		650876E717F6420400E3C4F4 /* LocColViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocColViewController.h; sourceTree = "<group>"; };
+		650876E817F6420400E3C4F4 /* LocColViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocColViewController.m; sourceTree = "<group>"; };
+		650876EA17F6420400E3C4F4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		650876F017F6420400E3C4F4 /* CommEffPivotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommEffPivotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		650876F117F6420400E3C4F4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		650876F917F6420400E3C4F4 /* CommEffPivotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CommEffPivotTests-Info.plist"; sourceTree = "<group>"; };
+		650876FB17F6420400E3C4F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommEffPivotTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		650876CC17F6420400E3C4F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */,
+				650876D717F6420400E3C4F4 /* UIKit.framework in Frameworks */,
+				650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		650876ED17F6420400E3C4F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876F217F6420400E3C4F4 /* XCTest.framework in Frameworks */,
+				650876F417F6420400E3C4F4 /* UIKit.framework in Frameworks */,
+				650876F317F6420400E3C4F4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		650876C617F6420400E3C4F4 = {
+			isa = PBXGroup;
+			children = (
+				650876D817F6420400E3C4F4 /* CommEffPivot */,
+				650876F717F6420400E3C4F4 /* CommEffPivotTests */,
+				650876D117F6420400E3C4F4 /* Frameworks */,
+				650876D017F6420400E3C4F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		650876D017F6420400E3C4F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				650876CF17F6420400E3C4F4 /* CommEffPivot.app */,
+				650876F017F6420400E3C4F4 /* CommEffPivotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		650876D117F6420400E3C4F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				650876D217F6420400E3C4F4 /* Foundation.framework */,
+				650876D417F6420400E3C4F4 /* CoreGraphics.framework */,
+				650876D617F6420400E3C4F4 /* UIKit.framework */,
+				650876F117F6420400E3C4F4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		650876D817F6420400E3C4F4 /* CommEffPivot */ = {
+			isa = PBXGroup;
+			children = (
+				650876E117F6420400E3C4F4 /* LocColAppDelegate.h */,
+				650876E217F6420400E3C4F4 /* LocColAppDelegate.m */,
+				650876E417F6420400E3C4F4 /* Main.storyboard */,
+				650876E717F6420400E3C4F4 /* LocColViewController.h */,
+				650876E817F6420400E3C4F4 /* LocColViewController.m */,
+				650876EA17F6420400E3C4F4 /* Images.xcassets */,
+				650876D917F6420400E3C4F4 /* Supporting Files */,
+			);
+			path = CommEffPivot;
+			sourceTree = "<group>";
+		};
+		650876D917F6420400E3C4F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				650876DA17F6420400E3C4F4 /* CommEffPivot-Info.plist */,
+				650876DB17F6420400E3C4F4 /* InfoPlist.strings */,
+				650876DE17F6420400E3C4F4 /* main.m */,
+				650876E017F6420400E3C4F4 /* CommEffPivot-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		650876F717F6420400E3C4F4 /* CommEffPivotTests */ = {
+			isa = PBXGroup;
+			children = (
+				650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */,
+				650876F817F6420400E3C4F4 /* Supporting Files */,
+			);
+			path = CommEffPivotTests;
+			sourceTree = "<group>";
+		};
+		650876F817F6420400E3C4F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				650876F917F6420400E3C4F4 /* CommEffPivotTests-Info.plist */,
+				650876FA17F6420400E3C4F4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		650876CE17F6420400E3C4F4 /* CommEffPivot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6508770117F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivot" */;
+			buildPhases = (
+				650876CB17F6420400E3C4F4 /* Sources */,
+				650876CC17F6420400E3C4F4 /* Frameworks */,
+				650876CD17F6420400E3C4F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommEffPivot;
+			productName = CommEffPivot;
+			productReference = 650876CF17F6420400E3C4F4 /* CommEffPivot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		650876EF17F6420400E3C4F4 /* CommEffPivotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6508770417F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivotTests" */;
+			buildPhases = (
+				650876EC17F6420400E3C4F4 /* Sources */,
+				650876ED17F6420400E3C4F4 /* Frameworks */,
+				650876EE17F6420400E3C4F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				650876F617F6420400E3C4F4 /* PBXTargetDependency */,
+			);
+			name = CommEffPivotTests;
+			productName = CommEffPivotTests;
+			productReference = 650876F017F6420400E3C4F4 /* CommEffPivotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		650876C717F6420400E3C4F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LocCol;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Yitong Zhou";
+				TargetAttributes = {
+					650876EF17F6420400E3C4F4 = {
+						TestTargetID = 650876CE17F6420400E3C4F4;
+					};
+				};
+			};
+			buildConfigurationList = 650876CA17F6420400E3C4F4 /* Build configuration list for PBXProject "CommEffPivot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 650876C617F6420400E3C4F4;
+			productRefGroup = 650876D017F6420400E3C4F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				650876CE17F6420400E3C4F4 /* CommEffPivot */,
+				650876EF17F6420400E3C4F4 /* CommEffPivotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		650876CD17F6420400E3C4F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876EB17F6420400E3C4F4 /* Images.xcassets in Resources */,
+				650876DD17F6420400E3C4F4 /* InfoPlist.strings in Resources */,
+				650876E617F6420400E3C4F4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		650876EE17F6420400E3C4F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876FC17F6420400E3C4F4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		650876CB17F6420400E3C4F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876E917F6420400E3C4F4 /* LocColViewController.m in Sources */,
+				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
+				650876DF17F6420400E3C4F4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		650876EC17F6420400E3C4F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				650876FE17F6420400E3C4F4 /* CommEffPivotTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		650876F617F6420400E3C4F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 650876CE17F6420400E3C4F4 /* CommEffPivot */;
+			targetProxy = 650876F517F6420400E3C4F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		650876DB17F6420400E3C4F4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				650876DC17F6420400E3C4F4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		650876E417F6420400E3C4F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				650876E517F6420400E3C4F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		650876FA17F6420400E3C4F4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				650876FB17F6420400E3C4F4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		650876FF17F6420400E3C4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6508770017F6420400E3C4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6508770217F6420400E3C4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommEffPivot/CommEffPivot-Prefix.pch";
+				INFOPLIST_FILE = "CommEffPivot/CommEffPivot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6508770317F6420400E3C4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommEffPivot/CommEffPivot-Prefix.pch";
+				INFOPLIST_FILE = "CommEffPivot/CommEffPivot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6508770517F6420400E3C4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CommEffPivot.app/CommEffPivot";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommEffPivot/CommEffPivot-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CommEffPivotTests/CommEffPivotTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6508770617F6420400E3C4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CommEffPivot.app/CommEffPivot";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommEffPivot/CommEffPivot-Prefix.pch";
+				INFOPLIST_FILE = "CommEffPivotTests/CommEffPivotTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		650876CA17F6420400E3C4F4 /* Build configuration list for PBXProject "CommEffPivot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				650876FF17F6420400E3C4F4 /* Debug */,
+				6508770017F6420400E3C4F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6508770117F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6508770217F6420400E3C4F4 /* Debug */,
+				6508770317F6420400E3C4F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6508770417F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6508770517F6420400E3C4F4 /* Debug */,
+				6508770617F6420400E3C4F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 650876C717F6420400E3C4F4 /* Project object */;
+}
