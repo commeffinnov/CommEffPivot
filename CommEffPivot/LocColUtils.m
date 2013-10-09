@@ -11,7 +11,7 @@
 
 @implementation LocColUtils
 
-- (BOOL) login:(NSString *) username
++ (BOOL) login:(NSString *) username
       password: (NSString *) password{
     NSString *bodyStr = [NSString stringWithFormat:@"%@%@", @"username=111", @"&password=111"];
     NSData *body = [bodyStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -31,9 +31,9 @@
     NSString *results = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(results);
     if ([results isEqualToString:@"0"])
-        return true;
+        return YES;
     else
-        return false;
+        return NO;
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @interface LocColUtils : NSObject
 
-- (BOOL) login:(NSString *) username
++ (BOOL) login:(NSString *) username
       password: (NSString *) password;
 
 @end
