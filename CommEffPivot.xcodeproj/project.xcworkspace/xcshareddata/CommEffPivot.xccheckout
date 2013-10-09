@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C186EFAF-759E-4E93-A8D0-4E16D8444F68</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CommEffPivot</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1E3A09C7-BA9E-4ACC-B09C-7B52B30EAF2A</key>
+		<string>https://github.com/timyitong/CommEffPivot.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CommEffPivot.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1E3A09C7-BA9E-4ACC-B09C-7B52B30EAF2A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/timyitong/CommEffPivot.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1E3A09C7-BA9E-4ACC-B09C-7B52B30EAF2A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1E3A09C7-BA9E-4ACC-B09C-7B52B30EAF2A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CommEffPivot</string>
+		</dict>
+	</array>
+</dict>
+</plist>

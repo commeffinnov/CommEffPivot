@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111C3E4718060709007561F1 /* LocColCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 111C3E4618060709007561F1 /* LocColCourse.m */; };
+		111C3E4A1806071B007561F1 /* LocColPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 111C3E491806071B007561F1 /* LocColPresentation.m */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
 		650876D717F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111C3E4518060709007561F1 /* LocColCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColCourse.h; sourceTree = "<group>"; };
+		111C3E4618060709007561F1 /* LocColCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCourse.m; sourceTree = "<group>"; };
+		111C3E481806071B007561F1 /* LocColPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColPresentation.h; sourceTree = "<group>"; };
+		111C3E491806071B007561F1 /* LocColPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentation.m; sourceTree = "<group>"; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		650876D417F6420400E3C4F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +121,10 @@
 				650876E117F6420400E3C4F4 /* LocColAppDelegate.h */,
 				650876E217F6420400E3C4F4 /* LocColAppDelegate.m */,
 				650876E417F6420400E3C4F4 /* Main.storyboard */,
+				111C3E4518060709007561F1 /* LocColCourse.h */,
+				111C3E4618060709007561F1 /* LocColCourse.m */,
+				111C3E481806071B007561F1 /* LocColPresentation.h */,
+				111C3E491806071B007561F1 /* LocColPresentation.m */,
 				650876E717F6420400E3C4F4 /* LocColViewController.h */,
 				650876E817F6420400E3C4F4 /* LocColViewController.m */,
 				650876EA17F6420400E3C4F4 /* Images.xcassets */,
@@ -252,7 +262,9 @@
 			files = (
 				650876E917F6420400E3C4F4 /* LocColViewController.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
+				111C3E4718060709007561F1 /* LocColCourse.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
+				111C3E4A1806071B007561F1 /* LocColPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +473,7 @@
 				6508770317F6420400E3C4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6508770417F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivotTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +482,7 @@
 				6508770617F6420400E3C4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
