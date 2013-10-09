@@ -21,6 +21,8 @@
 		650876F417F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
 		650876FC17F6420400E3C4F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 650876FA17F6420400E3C4F4 /* InfoPlist.strings */; };
 		650876FE17F6420400E3C4F4 /* CommEffPivotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */; };
+		6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FA180606D9007F9E19 /* LocColUtils.m */; };
+		6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,11 @@
 		650876F917F6420400E3C4F4 /* CommEffPivotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CommEffPivotTests-Info.plist"; sourceTree = "<group>"; };
 		650876FB17F6420400E3C4F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommEffPivotTests.m; sourceTree = "<group>"; };
+		6574B8F9180606D9007F9E19 /* LocColUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColUtils.h; sourceTree = "<group>"; };
+		6574B8FA180606D9007F9E19 /* LocColUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColUtils.m; sourceTree = "<group>"; };
+		6574B8FC18060C2C007F9E19 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColLoginViewController.h; sourceTree = "<group>"; };
+		6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +126,11 @@
 				650876E817F6420400E3C4F4 /* LocColViewController.m */,
 				650876EA17F6420400E3C4F4 /* Images.xcassets */,
 				650876D917F6420400E3C4F4 /* Supporting Files */,
+				6574B8F9180606D9007F9E19 /* LocColUtils.h */,
+				6574B8FA180606D9007F9E19 /* LocColUtils.m */,
+				6574B8FC18060C2C007F9E19 /* Constants.h */,
+				6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */,
+				6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */,
 			);
 			path = CommEffPivot;
 			sourceTree = "<group>";
@@ -251,6 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				650876E917F6420400E3C4F4 /* LocColViewController.m in Sources */,
+				6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */,
+				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
 			);
@@ -461,6 +475,7 @@
 				6508770317F6420400E3C4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6508770417F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivotTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +484,7 @@
 				6508770617F6420400E3C4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
