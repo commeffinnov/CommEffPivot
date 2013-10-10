@@ -8,6 +8,7 @@
 
 #import "LocColLoginViewController.h"
 #import "LocColUtils.h"
+#import "LocColTabBarController.h"
 
 @interface LocColLoginViewController()
 
@@ -40,7 +41,9 @@
     NSString *results = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(results);
     
-    self.display.text = @"hhahahah";
+    
+
+    
 }
 
 @end

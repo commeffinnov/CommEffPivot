@@ -8,6 +8,7 @@
 
 #import "LocColAppDelegate.h"
 
+
 @implementation LocColAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
