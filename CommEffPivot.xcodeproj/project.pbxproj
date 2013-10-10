@@ -28,8 +28,8 @@
 		6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B9081806331B007F9E19 /* LocColAPIRequest.m */; };
 		6583D04E180643920067422B /* LocColCourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6583D04D180643920067422B /* LocColCourseList.m */; };
 		65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9420E18067A3D0018BF2A /* LocColTableViewController.m */; };
-		65E942121807086A0018BF2A /* presentation 2 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E942101807086A0018BF2A /* presentation 2 copy.png */; };
-		65E942131807086A0018BF2A /* spanner 2 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E942111807086A0018BF2A /* spanner 2 copy.png */; };
+		65E9421618070D240018BF2A /* spanner 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E9421518070D240018BF2A /* spanner 2.png */; };
+		65E9421818070D400018BF2A /* presentation 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E9421718070D400018BF2A /* presentation 2.png */; };
 		FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA72F7C61806226C004A768A /* LocColRequestQueue.m */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +78,8 @@
 		6583D04D180643920067422B /* LocColCourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCourseList.m; sourceTree = "<group>"; };
 		65E9420D18067A3D0018BF2A /* LocColTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColTableViewController.h; sourceTree = "<group>"; };
 		65E9420E18067A3D0018BF2A /* LocColTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColTableViewController.m; sourceTree = "<group>"; };
-		65E942101807086A0018BF2A /* presentation 2 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "presentation 2 copy.png"; path = "../../../../Desktop/presentation 2 copy.png"; sourceTree = "<group>"; };
-		65E942111807086A0018BF2A /* spanner 2 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spanner 2 copy.png"; path = "../../../../Desktop/spanner 2 copy.png"; sourceTree = "<group>"; };
+		65E9421518070D240018BF2A /* spanner 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spanner 2.png"; path = "images/spanner 2.png"; sourceTree = "<group>"; };
+		65E9421718070D400018BF2A /* presentation 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "presentation 2.png"; path = "images/presentation 2.png"; sourceTree = "<group>"; };
 		FA72F7C51806226C004A768A /* LocColRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColRequestQueue.h; sourceTree = "<group>"; };
 		FA72F7C61806226C004A768A /* LocColRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColRequestQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,8 +198,8 @@
 		65E94214180708770018BF2A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				65E942101807086A0018BF2A /* presentation 2 copy.png */,
-				65E942111807086A0018BF2A /* spanner 2 copy.png */,
+				65E9421718070D400018BF2A /* presentation 2.png */,
+				65E9421518070D240018BF2A /* spanner 2.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -318,10 +318,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				650876EB17F6420400E3C4F4 /* Images.xcassets in Resources */,
+				65E9421618070D240018BF2A /* spanner 2.png in Resources */,
 				650876DD17F6420400E3C4F4 /* InfoPlist.strings in Resources */,
-				65E942131807086A0018BF2A /* spanner 2 copy.png in Resources */,
+				65E9421818070D400018BF2A /* presentation 2.png in Resources */,
 				650876E617F6420400E3C4F4 /* Main.storyboard in Resources */,
-				65E942121807086A0018BF2A /* presentation 2 copy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
