@@ -27,6 +27,7 @@
 		6574B90618063243007F9E19 /* LocColPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B90518063243007F9E19 /* LocColPresentation.m */; };
 		6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B9081806331B007F9E19 /* LocColAPIRequest.m */; };
 		6583D04E180643920067422B /* LocColCourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6583D04D180643920067422B /* LocColCourseList.m */; };
+		65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9420E18067A3D0018BF2A /* LocColTableViewController.m */; };
 		FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA72F7C61806226C004A768A /* LocColRequestQueue.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,8 @@
 		6574B9081806331B007F9E19 /* LocColAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColAPIRequest.m; sourceTree = "<group>"; };
 		6583D04C180643920067422B /* LocColCourseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColCourseList.h; sourceTree = "<group>"; };
 		6583D04D180643920067422B /* LocColCourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCourseList.m; sourceTree = "<group>"; };
+		65E9420D18067A3D0018BF2A /* LocColTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColTableViewController.h; sourceTree = "<group>"; };
+		65E9420E18067A3D0018BF2A /* LocColTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColTableViewController.m; sourceTree = "<group>"; };
 		FA72F7C51806226C004A768A /* LocColRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColRequestQueue.h; sourceTree = "<group>"; };
 		FA72F7C61806226C004A768A /* LocColRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColRequestQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +203,8 @@
 		FA72F7C3180621B8004A768A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				65E9420D18067A3D0018BF2A /* LocColTableViewController.h */,
+				65E9420E18067A3D0018BF2A /* LocColTableViewController.m */,
 				650876E717F6420400E3C4F4 /* LocColViewController.h */,
 				650876E817F6420400E3C4F4 /* LocColViewController.m */,
 				6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */,
@@ -325,6 +330,7 @@
 				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
 				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
+				65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */,
 				6583D04E180643920067422B /* LocColCourseList.m in Sources */,
 				6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
