@@ -12,9 +12,12 @@
 
 @property (nonatomic,weak) NSString * courseID;
 @property (nonatomic,weak) NSString * courseName;
+@property (nonatomic,weak) NSString * createdTime;
 
-+(NSMutableArray *) getAllCourses:(NSString *)userID;
-+(LocColCourse *) getCourseByID:(NSString *)courseID;
-+(void) addCourse:(NSString *)courseID;
+
+-(id) initWithAttributes:(NSString *) courseid
+                        name: (NSString *) name
+                        time: (NSString *) time;
+-(NSMutableArray *) getAllPresentations:(NSString *)userID;
 
 @end

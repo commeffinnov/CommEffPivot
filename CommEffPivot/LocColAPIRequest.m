@@ -17,20 +17,22 @@
     // Form a bodyStr
     NSMutableString *bodyStr = [[NSMutableString alloc]init];
     BOOL isFirst = YES;
-    for(id key in dict) {
-        id value = [dict objectForKey:key];
-        if (![key isKindOfClass:[NSString class]] || ![value isKindOfClass:[NSString class]]){
-            return nil;
+    if (dict != nil){
+        for(id key in dict) {
+            id value = [dict objectForKey:key];
+            if (![key isKindOfClass:[NSString class]] || ![value isKindOfClass:[NSString class]]){
+                return nil;
+            }
+            NSString *keyS = (NSString *)key;
+            NSString *valueS = (NSString *)value;
+            
+            if (!isFirst){
+                [bodyStr appendString:@"&"];
+            }else{
+                isFirst = NO;
+            }
+            [bodyStr appendString: [NSString stringWithFormat:@"%@=%@", keyS, valueS]];
         }
-        NSString *keyS = (NSString *)key;
-        NSString *valueS = (NSString *)value;
-        
-        if (!isFirst){
-            [bodyStr appendString:@"&"];
-        }else{
-            isFirst = NO;
-        }
-        [bodyStr appendString: [NSString stringWithFormat:@"%@=%@", keyS, valueS]];
     }
     // form body
     NSData *body = [bodyStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];

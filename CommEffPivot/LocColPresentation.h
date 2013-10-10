@@ -11,9 +11,11 @@
 @interface LocColPresentation : NSObject
 
 @property (nonatomic,weak) NSString * presentationID;
-@property (nonatomic,weak) NSString * presentationName;
+@property (nonatomic,weak) NSString * presentationTitle;
+@property (nonatomic,weak) NSString * presentationContent;
 
-+(NSMutableArray *) getAllPres:(NSString *)userID;
-+(NSMutableArray *) getPresByCourse:(NSString *)userID andCourseID:(NSString *)courseID;
-+(LocColPresentation *) getPresbyID: (NSString *)presentationID;
+-(id) initWithAttributes: (NSString *) pid
+            title:(NSString *) title
+            content:(NSString *) content;
+
 @end

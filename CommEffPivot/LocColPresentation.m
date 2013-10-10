@@ -10,4 +10,15 @@
 
 @implementation LocColPresentation
 
+-(id) initWithAttributes:(NSString *)pid
+                        title:(NSString *)title
+                        content:(NSString *)content
+{
+    self = [super init];
+    [self setPresentationID:pid];
+    [self setPresentationTitle:title];
+    [self setPresentationContent:content];
+    return self;
+}
+
 @end
