@@ -186,7 +186,7 @@
                             <outlet property="delegate" destination="u3O-hk-fSZ" id="ZZl-i7-DiX"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Setting" image="spanner 2.png" id="Ygr-gW-gkM"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="spanner 2 copy.png" id="Ygr-gW-gkM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooV-aW-OEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,7 +227,7 @@
                             <outlet property="delegate" destination="1Xr-4T-9pr" id="3bm-eL-Lja"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Browse" id="yyE-Yy-Nkw"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="presentation 2 copy.png" id="yyE-Yy-Nkw"/>
                     <navigationItem key="navigationItem" title="Courses" id="Aus-XA-mW7"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VA-WX-hTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +348,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="spanner 2.png" width="30" height="30"/>
+        <image name="presentation 2 copy.png" width="30" height="30"/>
+        <image name="spanner 2 copy.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
