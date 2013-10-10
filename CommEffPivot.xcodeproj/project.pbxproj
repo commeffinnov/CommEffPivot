@@ -23,6 +23,7 @@
 		650876FE17F6420400E3C4F4 /* CommEffPivotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */; };
 		6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FA180606D9007F9E19 /* LocColUtils.m */; };
 		6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */; };
+		FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA72F7C61806226C004A768A /* LocColRequestQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		6574B8FC18060C2C007F9E19 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColLoginViewController.h; sourceTree = "<group>"; };
 		6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColLoginViewController.m; sourceTree = "<group>"; };
+		FA72F7C51806226C004A768A /* LocColRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColRequestQueue.h; sourceTree = "<group>"; };
+		FA72F7C61806226C004A768A /* LocColRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColRequestQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,18 +122,13 @@
 		650876D817F6420400E3C4F4 /* CommEffPivot */ = {
 			isa = PBXGroup;
 			children = (
+				FA72F7C2180620BB004A768A /* Classes */,
 				650876E117F6420400E3C4F4 /* LocColAppDelegate.h */,
 				650876E217F6420400E3C4F4 /* LocColAppDelegate.m */,
 				650876E417F6420400E3C4F4 /* Main.storyboard */,
-				650876E717F6420400E3C4F4 /* LocColViewController.h */,
-				650876E817F6420400E3C4F4 /* LocColViewController.m */,
 				650876EA17F6420400E3C4F4 /* Images.xcassets */,
 				650876D917F6420400E3C4F4 /* Supporting Files */,
-				6574B8F9180606D9007F9E19 /* LocColUtils.h */,
-				6574B8FA180606D9007F9E19 /* LocColUtils.m */,
 				6574B8FC18060C2C007F9E19 /* Constants.h */,
-				6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */,
-				6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */,
 			);
 			path = CommEffPivot;
 			sourceTree = "<group>";
@@ -162,6 +160,37 @@
 				650876FA17F6420400E3C4F4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA72F7C2180620BB004A768A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FA72F7C418062212004A768A /* Helpers */,
+				FA72F7C3180621B8004A768A /* Views */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		FA72F7C3180621B8004A768A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				650876E717F6420400E3C4F4 /* LocColViewController.h */,
+				650876E817F6420400E3C4F4 /* LocColViewController.m */,
+				6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */,
+				6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FA72F7C418062212004A768A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6574B8F9180606D9007F9E19 /* LocColUtils.h */,
+				FA72F7C51806226C004A768A /* LocColRequestQueue.h */,
+				FA72F7C61806226C004A768A /* LocColRequestQueue.m */,
+				6574B8FA180606D9007F9E19 /* LocColUtils.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +294,7 @@
 				650876E917F6420400E3C4F4 /* LocColViewController.m in Sources */,
 				6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */,
 				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
+				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
 			);
