@@ -35,7 +35,7 @@
     
     LocColCourseList *courseList = [[LocColCourseList alloc] init];
     NSMutableArray *list = [courseList getCourses:@"111"];
-    LocColCourse *c = [list objectAtIndex:1];
+    LocColCourse *c = [list objectAtIndex:0];
     [c getAllPresentations:@"111"];
     
 }
