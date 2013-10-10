@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface LocColLoginViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *display;
+@property (weak, nonatomic) IBOutlet UITextField *display;
 
 @end
