@@ -15,6 +15,7 @@
 @implementation LocColLoginViewController
 
 - (IBAction)testBtn:(UIButton *)sender {
+    self.display.text = @"shit";
     NSLog(@"hahahahahha");
 }
 
