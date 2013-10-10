@@ -8,41 +8,35 @@
 
 #import "LocColLoginViewController.h"
 #import "LocColUtils.h"
-#import "LocColTabBarController.h"
+#import "LocColCourse.h"
+#import "LocColAPIRequest.h"
+#import "LocColCourseList.h"
 
 @interface LocColLoginViewController()
 
 @end
 @implementation LocColLoginViewController
 
-- (IBAction)testBtn:(UIButton *)sender {
-    self.display.text = @"shit";
-    NSLog(@"hahahahahha");
-}
-
 - (IBAction)loginPressed:(UIButton *) sender {
     NSLog(@"hello");
+
+    NSString * login_url = [NSString stringWithFormat: @"%@%@", API_HOST, @"login"];
     
-    NSString *bodyStr = [NSString stringWithFormat:@"%@%@", @"username=111", @"&password=111"];
-    NSData *body = [bodyStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+    LocColAPIRequest *request = [[LocColAPIRequest alloc] init];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", API_HOST, @"login"]];
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod: @"POST"];
-    [request setURL: url];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody: body];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:(id) @"111", (id)@"username", (id)@"112", (id)@"password", nil ];
     
-    NSError *requestError;
-    NSURLResponse *urlResponse = nil;
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    NSString *results = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+    NSData *data = [request get: login_url data: dict method: @"POST"];
+    
+    NSString *results = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(results);
     
+    self.display.text = @"hhahahah";
     
-
+    LocColCourseList *courseList = [[LocColCourseList alloc] init];
+    NSMutableArray *list = [courseList getCourses:@"111"];
+    LocColCourse *c = [list objectAtIndex:1];
+    [c getAllPresentations:@"111"];
     
 }
 
