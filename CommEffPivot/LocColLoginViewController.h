@@ -10,5 +10,7 @@
 
 @interface LocColLoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *display;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UITextField *notification;
 
 @end
