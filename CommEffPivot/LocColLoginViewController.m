@@ -49,12 +49,7 @@
     }else{
         [self.notification setText:@"invalid username or password"];
     }
-    
-    LocColCourseList *courseList = [[LocColCourseList alloc] init];
-    NSMutableArray *list = [courseList getCourses:@"111"];
-    LocColCourse *c = [list objectAtIndex:0];
-    [c getAllPresentations:@"111"];
-    
+        
 }
 
 @end
