@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFHTTPRequestOperation.h"
 
-@interface LocColFetchCourseListOperation
+@interface LocColFetchCourseListOperation :AFHTTPRequestOperation
 
 @end

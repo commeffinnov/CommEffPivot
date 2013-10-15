@@ -10,6 +10,11 @@
 
 @interface LocColCourseList : NSObject
 
--(NSMutableArray *) getCourses: (NSString *) userid;
+@property NSArray *  datasource;
+@property UITableViewController * view;
+
++(void) loadCourses: (NSString *) userid
+         datasource: (NSArray *) datasource
+               view: (UITableViewController *) view;
 
 @end
