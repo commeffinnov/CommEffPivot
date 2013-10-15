@@ -9,6 +9,8 @@
 #import "LocColCourseList.h"
 #import "LocColCourse.h"
 #import "LocColTableViewController.h"
+#import "Constants.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface LocColTableViewController ()
 
@@ -34,8 +36,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -43,11 +43,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.dataSource = self;
     
-    //if (self.courseData == nil){
-    self.courseData = [[NSArray alloc] initWithObjects:@"machine", @"svm", nil];
+    self.courseData = [[NSMutableArray alloc] init];
     
-    //}
-    NSLog(@"%@!!??", self.courseData);
+    [self fetchCourseList];
+    
+    [super viewDidLoad];
     
 }
 
@@ -75,66 +75,40 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    if (cell == nil){
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
     
     cell.textLabel.text = [self.courseData objectAtIndex: indexPath.row];
-    // Configure the cell...
-    NSLog(@"%@!!??222", self.courseData);
 
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) fetchCourseList
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"courses/",@"123"];
+    NSURL *URL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *array = responseObject;
+        
+        for (NSDictionary *dict in array){
+            NSString *name = [dict valueForKey:@"name"];
+            NSString *cid = [dict valueForKey:@"_id"];
+            NSString *time = [dict valueForKey:@"ctime"];
+            //            LocColCourse *course = [[LocColCourse alloc] initWithAttributes:cid name:name time:time];
+            // [list addObject: (id)course];
+            [self.courseData addObject:(id) name];
+        }
+        [self.tableView reloadData];
+        
+        NSLog(@"JSON: %@", array);
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+    }];
+    [[NSOperationQueue mainQueue] addOperation:op];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

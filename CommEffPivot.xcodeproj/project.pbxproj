@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
 		650876D717F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
@@ -26,6 +27,7 @@
 		6574B903180631BE007F9E19 /* LocColCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B902180631BE007F9E19 /* LocColCourse.m */; };
 		6574B90618063243007F9E19 /* LocColPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B90518063243007F9E19 /* LocColPresentation.m */; };
 		6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B9081806331B007F9E19 /* LocColAPIRequest.m */; };
+		6582DCA3180CB42A004C9C6A /* LocColFetchCourseListOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6582DCA2180CB42A004C9C6A /* LocColFetchCourseListOperation.m */; };
 		6583D04E180643920067422B /* LocColCourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6583D04D180643920067422B /* LocColCourseList.m */; };
 		65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9420E18067A3D0018BF2A /* LocColTableViewController.m */; };
 		65E9421618070D240018BF2A /* spanner 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E9421518070D240018BF2A /* spanner 2.png */; };
@@ -44,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		650876D417F6420400E3C4F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,12 +77,15 @@
 		6574B90518063243007F9E19 /* LocColPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentation.m; sourceTree = "<group>"; };
 		6574B9071806331B007F9E19 /* LocColAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColAPIRequest.h; sourceTree = "<group>"; };
 		6574B9081806331B007F9E19 /* LocColAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColAPIRequest.m; sourceTree = "<group>"; };
+		6582DCA1180CB42A004C9C6A /* LocColFetchCourseListOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColFetchCourseListOperation.h; sourceTree = "<group>"; };
+		6582DCA2180CB42A004C9C6A /* LocColFetchCourseListOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColFetchCourseListOperation.m; sourceTree = "<group>"; };
 		6583D04C180643920067422B /* LocColCourseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColCourseList.h; sourceTree = "<group>"; };
 		6583D04D180643920067422B /* LocColCourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCourseList.m; sourceTree = "<group>"; };
 		65E9420D18067A3D0018BF2A /* LocColTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColTableViewController.h; sourceTree = "<group>"; };
 		65E9420E18067A3D0018BF2A /* LocColTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColTableViewController.m; sourceTree = "<group>"; };
 		65E9421518070D240018BF2A /* spanner 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spanner 2.png"; path = "images/spanner 2.png"; sourceTree = "<group>"; };
 		65E9421718070D400018BF2A /* presentation 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "presentation 2.png"; path = "images/presentation 2.png"; sourceTree = "<group>"; };
+		7C624B93A9844F23AD91F23C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FA72F7C51806226C004A768A /* LocColRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColRequestQueue.h; sourceTree = "<group>"; };
 		FA72F7C61806226C004A768A /* LocColRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColRequestQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +98,7 @@
 				650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */,
 				650876D717F6420400E3C4F4 /* UIKit.framework in Frameworks */,
 				650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */,
+				1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +122,7 @@
 				650876F717F6420400E3C4F4 /* CommEffPivotTests */,
 				650876D117F6420400E3C4F4 /* Frameworks */,
 				650876D017F6420400E3C4F4 /* Products */,
+				7C624B93A9844F23AD91F23C /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +142,7 @@
 				650876D417F6420400E3C4F4 /* CoreGraphics.framework */,
 				650876D617F6420400E3C4F4 /* UIKit.framework */,
 				650876F117F6420400E3C4F4 /* XCTest.framework */,
+				350DE8BA9F6E4E76AF954139 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,6 +204,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		6582DCA0180CB238004C9C6A /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				6582DCA1180CB42A004C9C6A /* LocColFetchCourseListOperation.h */,
+				6582DCA2180CB42A004C9C6A /* LocColFetchCourseListOperation.m */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		65E94214180708770018BF2A /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +225,7 @@
 		FA72F7C2180620BB004A768A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6582DCA0180CB238004C9C6A /* Operations */,
 				6574B900180631A1007F9E19 /* Models */,
 				FA72F7C418062212004A768A /* Helpers */,
 				FA72F7C3180621B8004A768A /* Views */,
@@ -247,9 +266,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6508770117F6420400E3C4F4 /* Build configuration list for PBXNativeTarget "CommEffPivot" */;
 			buildPhases = (
+				61A7365184AB4C44AAAFE145 /* Check Pods Manifest.lock */,
 				650876CB17F6420400E3C4F4 /* Sources */,
 				650876CC17F6420400E3C4F4 /* Frameworks */,
 				650876CD17F6420400E3C4F4 /* Resources */,
+				E3D46BB1F93744B7887AD386 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +356,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		61A7365184AB4C44AAAFE145 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E3D46BB1F93744B7887AD386 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		650876CB17F6420400E3C4F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,6 +400,7 @@
 				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
 				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
+				6582DCA3180CB42A004C9C6A /* LocColFetchCourseListOperation.m in Sources */,
 				65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */,
 				6583D04E180643920067422B /* LocColCourseList.m in Sources */,
 				6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */,
@@ -474,6 +529,7 @@
 		};
 		6508770217F6420400E3C4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C624B93A9844F23AD91F23C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -487,6 +543,7 @@
 		};
 		6508770317F6420400E3C4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C624B93A9844F23AD91F23C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
