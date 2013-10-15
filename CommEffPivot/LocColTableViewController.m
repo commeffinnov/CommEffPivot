@@ -39,12 +39,13 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // Uncomment the following line to display an fEdit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSLog(@"view loaded");
     self.tableView.dataSource = self;
     
     //if (self.courseData == nil){
-    self.courseData = [[NSArray alloc] initWithObjects:@"machine", @"svm", nil];
+    self.courseData = [[NSArray alloc] initWithObjects:@"machine", @"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm", nil];
     
     //}
     NSLog(@"%@!!??", self.courseData);
@@ -73,13 +74,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Course_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    if (cell == nil){
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
     cell.textLabel.text = [self.courseData objectAtIndex: indexPath.row];
+ 
     // Configure the cell...
     NSLog(@"%@!!??222", self.courseData);
 
