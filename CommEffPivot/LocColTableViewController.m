@@ -45,7 +45,7 @@
     self.tableView.dataSource = self;
     
     //if (self.courseData == nil){
-    self.courseData = [[NSArray alloc] initWithObjects:@"machine", @"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm",@"svm", nil];
+    self.courseData = [[NSArray alloc] initWithObjects:@"machine", @"svm", nil];
     
     //}
     NSLog(@"%@!!??", self.courseData);
