@@ -9,8 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LocColTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic)NSArray *courseData;
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)sender;
-- (NSInteger)tableView:(UITableView *)sender numberOfRowsInSection:(NSInteger)section;
-
+@property (strong, nonatomic)NSMutableArray *courseData;
 @end
