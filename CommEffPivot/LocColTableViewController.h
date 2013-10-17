@@ -10,4 +10,5 @@
 
 @interface LocColTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic)NSMutableArray *courseData;
+
 @end

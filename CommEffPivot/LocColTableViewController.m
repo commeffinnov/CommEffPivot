@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Yitong Zhou. All rights reserved.
 //
 
+#import "LocColPresentation.h"
 #import "LocColCourseList.h"
 #import "LocColCourse.h"
 #import "LocColTableViewController.h"
+#import "LocColPresentationViewController.h"
 #import "Constants.h"
 #import "AFHTTPRequestOperation.h"
 
@@ -109,6 +111,21 @@
         NSLog(@"Error: %@", error);
     }];
     [[NSOperationQueue mainQueue] addOperation:op];
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+    
+    //Build a segue string based on the selected cell
+    NSString *segueString = [NSString stringWithFormat:@"%@Segue",
+                             [self.courseData objectAtIndex:indexPath.row]];
+    //Since contentArray is an array of strings, we can use it to build a unique
+    //identifier for each segue.
+    
+    //Perform a segue.
+    [self performSegueWithIdentifier:segueString
+                              sender:[self.courseData objectAtIndex:indexPath.row]];
+    
 }
 
 @end

@@ -15,9 +15,9 @@
                         content:(NSString *)content
 {
     self = [super init];
-    [self setPresentationID:pid];
-    [self setPresentationTitle:title];
-    [self setPresentationContent:content];
+    [self setID:pid];
+    [self setTitle:title];
+    [self setContent:content];
     return self;
 }
 
