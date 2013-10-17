@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11E0BEF61810AB7A004E4650 /* C-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C-Logo.png"; sourceTree = "<group>"; };
 		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11E0BEF81810AB8C004E4650 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				11E0BEF61810AB7A004E4650 /* C-Logo.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		650876C617F6420400E3C4F4 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		650876D917F6420400E3C4F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11E0BEF81810AB8C004E4650 /* images */,
 				650876DA17F6420400E3C4F4 /* CommEffPivot-Info.plist */,
 				650876DB17F6420400E3C4F4 /* InfoPlist.strings */,
 				650876DE17F6420400E3C4F4 /* main.m */,
@@ -352,6 +363,7 @@
 				65E9421618070D240018BF2A /* spanner 2.png in Resources */,
 				650876DD17F6420400E3C4F4 /* InfoPlist.strings in Resources */,
 				65E9421818070D400018BF2A /* presentation 2.png in Resources */,
+				11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */,
 				650876E617F6420400E3C4F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
