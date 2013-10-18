@@ -44,8 +44,8 @@
     // check password
     NSLog(@"!!%@", results);
     if ([results isEqualToString:@"0"]){
-        NSLog(@"shit");
         [self performSegueWithIdentifier:@"loginSegue" sender: self];
+       
     }else{
         [self.notification setText:@"invalid username or password"];
     }
