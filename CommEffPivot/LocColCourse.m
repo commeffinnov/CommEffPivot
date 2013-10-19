@@ -12,6 +12,8 @@
 
 @implementation LocColCourse
 
+NSMutableArray * _list;
+
 -(id)initWithAttributes:(NSString *)courseid
                    name:(NSString *)name
                    time:(NSString *)time
@@ -23,23 +25,30 @@
     return self;
 }
 
--(NSMutableArray *) getAllPresentations:(NSString *)userID
+- (void) setPresentations:(NSMutableArray *)presentations
 {
-    NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"courses/presentations/", self.courseID];
-    LocColAPIRequest *request = [[LocColAPIRequest alloc] init];
-    NSData *responseData = [request get:url data:nil method: @"GET"];
-    NSError *error;
-    NSArray *array = [NSJSONSerialization JSONObjectWithData: responseData options:NSJSONReadingMutableContainers error:&error];
-    NSMutableArray *list = [[NSMutableArray alloc] init];
-    for (NSDictionary *dict in array){
-        NSString *content = [dict valueForKey:@"content"];
-        NSString *title = [dict valueForKey:@"title"];
-        NSString *pid = [dict valueForKey:@"_id"];
-        LocColPresentation *presentation = [[LocColPresentation alloc] initWithAttributes:pid title:title content:content];
-        [list addObject: (id)presentation];
+    _list = presentations;
+}
+
+- (NSMutableArray *) presentations
+{
+    if (!_list){
+        NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"courses/presentations/", self.courseID];
+        LocColAPIRequest *request = [[LocColAPIRequest alloc] init];
+        NSData *responseData = [request get:url data:nil method: @"GET"];
+        NSError *error;
+        NSArray *array = [NSJSONSerialization JSONObjectWithData: responseData options:NSJSONReadingMutableContainers error:&error];
+        _list = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in array){
+            NSString *content = [dict valueForKey:@"content"];
+            NSString *title = [dict valueForKey:@"title"];
+            NSString *pid = [dict valueForKey:@"_id"];
+            LocColPresentation *presentation = [[LocColPresentation alloc] initWithAttributes:pid title:title content:content];
+            [_list addObject: (id)presentation];
+        }
     }
-    NSLog(@"%@", list);
-    return list;
+    NSLog(@"%@",_list);
+    return _list;
 }
 
 @end

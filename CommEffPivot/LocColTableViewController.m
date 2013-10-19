@@ -11,6 +11,7 @@
 #import "LocColCourse.h"
 #import "LocColTableViewController.h"
 #import "LocColPresentationViewController.h"
+#import "LocColPresentationListViewController.h"
 #import "Constants.h"
 #import "AFHTTPRequestOperation.h"
 
@@ -78,7 +79,8 @@
     static NSString *CellIdentifier = @"course_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.courseData objectAtIndex: indexPath.row];
+    LocColCourse *c = (LocColCourse *)[self.courseData objectAtIndex: indexPath.row];
+    cell.textLabel.text = c.courseName;
 
     return cell;
 }
@@ -98,9 +100,8 @@
             NSString *name = [dict valueForKey:@"name"];
             NSString *cid = [dict valueForKey:@"_id"];
             NSString *time = [dict valueForKey:@"ctime"];
-            //            LocColCourse *course = [[LocColCourse alloc] initWithAttributes:cid name:name time:time];
-            // [list addObject: (id)course];
-            [self.courseData addObject:(id) name];
+            LocColCourse *course = [[LocColCourse alloc] initWithAttributes:cid name:name time:time];
+            [self.courseData addObject:(id) course];
         }
         [self.tableView reloadData];
         
@@ -113,17 +114,34 @@
     [[NSOperationQueue mainQueue] addOperation:op];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"GoToPresentationList"]) {
+        
+        // Get destination view
+        LocColPresentationListViewController *vc = [segue destinationViewController];
+        
+        // Get button tag number (or do whatever you need to do here, based on your object
+        // LocColCourse *course = (LocColCourse *)sender;
+        
+        // Pass the information to your destination view
+        [vc setCourse:[self.courseData objectAtIndex:0]];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
     
     //Build a segue string based on the selected cell
-    NSString *segueString = [NSString stringWithFormat:@"%@Segue",
-                             [self.courseData objectAtIndex:indexPath.row]];
+//    NSString *segueString = [NSString stringWithFormat:@"%@Segue",
+//                             [self.courseData objectAtIndex:indexPath.row]];
+    
     //Since contentArray is an array of strings, we can use it to build a unique
     //identifier for each segue.
     
+    NSLog(@"gdddd!!!");
     //Perform a segue.
-    [self performSegueWithIdentifier:segueString
+    [self performSegueWithIdentifier:@"GoToPresentationList"
                               sender:[self.courseData objectAtIndex:indexPath.row]];
     
 }

@@ -10,14 +10,13 @@
 
 @interface LocColCourse : NSObject
 
-@property (nonatomic,weak) NSString * courseID;
-@property (nonatomic,weak) NSString * courseName;
-@property (nonatomic,weak) NSString * createdTime;
+@property (nonatomic,strong) NSString * courseID;
+@property (nonatomic,strong) NSString * courseName;
+@property (nonatomic,strong) NSString * createdTime;
+@property (nonatomic,strong) NSMutableArray *presentations;
 
 
 -(id) initWithAttributes:(NSString *) courseid
                         name: (NSString *) name
                         time: (NSString *) time;
--(NSMutableArray *) getAllPresentations:(NSString *)userID;
-
 @end
