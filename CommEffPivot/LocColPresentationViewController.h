@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class LocColPresentation;
+#import "LocColPresentation.h"
+
 @interface LocColPresentationViewController : UIViewController
-@property (nonatomic, retain) LocColPresentation *presentation;
+@property (nonatomic, strong) LocColPresentation *presentation;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 

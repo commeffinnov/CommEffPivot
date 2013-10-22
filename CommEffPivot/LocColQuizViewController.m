@@ -49,7 +49,7 @@
     self.bText.text = @"n non-leaf nodes";
     self.cText.text = @"n-1 leaf nodes";
     self.dText.text = @"n-1 non-leaf nodes";
-    [self setupTimer:5];
+    [self setupTimer:30];
     
 }
 

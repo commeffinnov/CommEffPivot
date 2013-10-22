@@ -8,6 +8,8 @@
 
 #import "AFHTTPRequestOperation.h"
 
+#import "LocColQuizViewController.h"
+#import "LocColPresentationViewController.h"
 #import "LocColPresentationListViewController.h"
 #import "LocColPresentation.h"
 
@@ -99,6 +101,38 @@
             NSLog(@"Error: %@", error);
         }];
         [[NSOperationQueue mainQueue] addOperation:op];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"sender: %@", [(LocColPresentation *)sender title]);
+    if ([[segue identifier] isEqualToString:@"GoToPresentationDetails"]) {
+        // Get destination view
+        LocColPresentationViewController *vc = [segue destinationViewController];
+        
+        [vc setPresentation: (LocColPresentation *)sender];
+    }else if ([[segue identifier] isEqualToString:@"GoToQuizDetails"]) {
+        LocColQuizViewController *vc = [segue destinationViewController];
+        [vc setPresentation: (LocColPresentation *)sender];
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Bind the details view with the cell selected event
+    
+    LocColPresentation *presentation = [self.course.presentations objectAtIndex:indexPath.row];
+    NSLog(@"Presentation List Button Pressed, type: %@", presentation.type);
+
+    if ([presentation.type isEqualToString:@"quiz"]){
+        [self performSegueWithIdentifier:@"GoToQuizDetails"
+                              sender:presentation];
+    }else{
+        NSLog(@"present:%@", presentation);
+        [self performSegueWithIdentifier:@"GoToPresentationDetails"
+                                  sender:(id)presentation];
+    }
 }
 
 @end

@@ -47,7 +47,7 @@
                                 <rect key="frame" x="51" y="351" width="211" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1647058874" green="0.5176470876" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="tintColor" patternImage="9387FDF8-67CA-435E-95A9-7DF91D1C3468" colorSpace="pattern"/>
+                                <color key="tintColor" patternImage="3816066C-8BC9-42DD-9B8F-FA35F6D307DE" colorSpace="pattern"/>
                                 <size key="titleShadowOffset" width="7" height="7"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
@@ -195,10 +195,53 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Lectures" id="BPM-E3-h3d"/>
+                    <connections>
+                        <segue destination="kdP-w4-hAf" kind="push" identifier="GoToQuizDetails" id="o5L-xR-Rul"/>
+                        <segue destination="8Ir-3d-xou" kind="push" identifier="GoToPresentationDetails" id="TK2-Gp-nmh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozq-qs-9Ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="832" y="-1055"/>
+        </scene>
+        <!--Loc Col Presentation View Controller-->
+        <scene sceneID="Gde-dF-VdH">
+            <objects>
+                <viewController id="8Ir-3d-xou" customClass="LocColPresentationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ud9-Uz-DDf"/>
+                        <viewControllerLayoutGuide type="bottom" id="qrJ-gO-vTg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GLi-MI-aGN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="247" translatesAutoresizingMaskIntoConstraints="NO" id="cte-0k-R6k">
+                                <rect key="frame" x="45" y="108" width="247" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="257" translatesAutoresizingMaskIntoConstraints="NO" id="y8v-yx-ttT">
+                                <rect key="frame" x="30" y="148" width="257" height="340"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iPm-0H-RhI"/>
+                    <connections>
+                        <outlet property="contentLabel" destination="y8v-yx-ttT" id="E0P-xF-UKd"/>
+                        <outlet property="titleLabel" destination="cte-0k-R6k" id="E7a-aa-LvL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2D2-gS-80z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1232" y="-1550"/>
         </scene>
         <!--Loc Col Quiz View Controller-->
         <scene sceneID="JIr-kQ-QmF">
@@ -297,6 +340,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Crt-OG-Qdv"/>
                     <connections>
                         <outlet property="aText" destination="CxQ-sH-KSs" id="Tie-yK-8wl"/>
                         <outlet property="bText" destination="lwo-5c-chl" id="7IK-kD-LpU"/>
@@ -312,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Zr-12t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="-1055"/>
+            <point key="canvasLocation" x="1232" y="-869"/>
         </scene>
         <!--Table View Controller - Setting-->
         <scene sceneID="WSK-hp-ihc">
@@ -415,7 +459,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9387FDF8-67CA-435E-95A9-7DF91D1C3468" width="256" height="256">
+        <image name="3816066C-8BC9-42DD-9B8F-FA35F6D307DE" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LocColPresentation.h"
+
 @interface LocColQuizViewController : UIViewController
+
+@property (strong, nonatomic) LocColPresentation *presentation;
 
 @end

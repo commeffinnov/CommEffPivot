@@ -12,7 +12,7 @@
 
 @implementation LocColPresentationViewController
 
-@synthesize presentation;
+@synthesize presentation=_presentation;
 
 @synthesize titleLabel, contentLabel;
 
@@ -38,9 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = presentation.title;
-    self.contentLabel.text = presentation.content;
-    self.titleLabel.text = [NSString stringWithFormat:@"%@", presentation.title];
+    self.navigationItem.title = _presentation.title;
+    self.contentLabel.text = _presentation.content;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@", _presentation.title];
 }
 
 - (void)viewDidUnload
