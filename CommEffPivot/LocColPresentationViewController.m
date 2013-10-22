@@ -12,9 +12,9 @@
 
 @implementation LocColPresentationViewController
 
-@synthesize presentation;
+@synthesize presentation=_presentation;
 
-@synthesize titleLabel, contentLabel;
+@synthesize titleLabel, contentText;
 
 - (id)initWithCourseID:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,9 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = presentation.title;
-    self.contentLabel.text = presentation.content;
-    self.titleLabel.text = [NSString stringWithFormat:@"%@", presentation.title];
+    self.navigationItem.title = _presentation.title;
+    self.contentText.text = _presentation.content;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@", _presentation.title];
 }
 
 - (void)viewDidUnload
@@ -50,7 +50,7 @@
     self.presentation = nil;
     
     self.titleLabel = nil;
-    self.contentLabel = nil;
+    self.contentText = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

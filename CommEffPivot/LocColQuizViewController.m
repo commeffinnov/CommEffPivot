@@ -7,6 +7,10 @@
 //
 
 #import "LocColQuizViewController.h"
+#import "LocColQuestion.h"
+#import "LocColPresentation.h"
+#import "AFHTTPRequestOperation.h"
+
 
 @interface LocColQuizViewController (){
     NSInteger currentQuestionID;
@@ -14,7 +18,6 @@
     __weak IBOutlet UIButton *choiceB;
     __weak IBOutlet UIButton *choiceC;
     __weak IBOutlet UIButton *choiceD;
-    bool endOfQuiz;
     NSInteger seconds;
     NSTimer * timer;
 }
@@ -31,6 +34,12 @@
 
 @implementation LocColQuizViewController
 
+// private variables:
+@synthesize presentation=_presentation;
+NSInteger _nextQuestionIndex = 0;
+bool _endOfQuiz = false;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,17 +49,58 @@
     return self;
 }
 
-- (void) setupQuestion:(NSInteger)questionID{
-    
-    currentQuestionID = questionID;
-    
-    self.questionDisplay.text= @"A full binary tree with 2n+1 nodes contain";
-    self.aText.text = @"n leaf nodes";
-    self.bText.text = @"n non-leaf nodes";
-    self.cText.text = @"n-1 leaf nodes";
-    self.dText.text = @"n-1 non-leaf nodes";
-    [self setupTimer:5];
-    
+- (void) fetchQuestions
+{
+    if (self.presentation != nil){
+        NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"questions/",self.presentation.ID];
+        NSURL *URL = [NSURL URLWithString:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        op.responseSerializer = [AFJSONResponseSerializer serializer];
+        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSArray *array = responseObject;
+            
+            for (NSDictionary *dict in array){
+                LocColQuestion *question = [[LocColQuestion alloc] init];
+                question.title = [dict valueForKey:@"title"];
+                question.ctime = [dict valueForKey:@"ctime"];
+                question.ID = [dict valueForKey:@"_id"];
+                question.presentationID = [dict valueForKey:@"presentationID"];
+                question.number = [dict valueForKey:@"number"];
+                question.selections = [dict valueForKey:@"selections"];
+                [self.questions addObject:(id) question];
+                
+            }
+            [self setupQuestion:0];
+            
+            NSLog(@"JSON: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+        }];
+        [[NSOperationQueue mainQueue] addOperation:op];
+    }
+}
+
+- (void) setupQuestion:(NSInteger)questionIndex{
+    if (questionIndex >= [self.questions count]){
+        _endOfQuiz = true;
+        return;
+    }else{
+        _endOfQuiz = false;
+    }
+    // Get current question
+    LocColQuestion *question = [self.questions objectAtIndex:questionIndex];
+    if (question != nil){
+        self.questionDisplay.text= question.title;
+        self.aText.text = [question.selections objectAtIndex:0];
+        self.bText.text = [question.selections objectAtIndex:1];
+        self.cText.text = [question.selections objectAtIndex:2];
+        self.dText.text = [question.selections objectAtIndex:3];
+        [self setupTimer:30];
+    }
+    _nextQuestionIndex = questionIndex+1;
 }
 
 - (IBAction)madeChoice:(UIButton *)sender {
@@ -59,31 +109,32 @@
     //After user made a choice, stop the timer. 
     [timer invalidate];
     
-    //If the user reached the end of the quiz, show an alert box.
-    if (endOfQuiz==true){
-        UIAlertView *alertFinish = [[UIAlertView alloc] initWithTitle:@"Quiz finished"
-                                                        message:[NSString stringWithFormat:@"Congratulation, you've finished all the questions"]
-                                                       delegate:self
-                                              cancelButtonTitle:@"Done"
-                                              otherButtonTitles:nil, nil];
-        
-        [alertFinish show];
-    }
     if (sender == choiceA){
         NSLog(@"choice a selected");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceB){
         NSLog(@"choice b selected");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceC){
         NSLog(@"choice c selected");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceD){
         NSLog(@"choice d selected");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
+    }
+
+    //If the user reached the end of the quiz, show an alert box.
+    if (_endOfQuiz==true){
+        UIAlertView *alertFinish = [[UIAlertView alloc] initWithTitle:@"Quiz finished"
+                                                              message:[NSString stringWithFormat:@"Congratulation, you've finished all the questions"]
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Done"
+                                                    otherButtonTitles:nil, nil];
+        
+        [alertFinish show];
     }
     
 }
@@ -92,8 +143,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Set up a question right after view did load
-    [self setupQuestion:1];
+    if (self.questions == nil){
+        [self setQuestions:[[NSMutableArray alloc] init]];
+        [self fetchQuestions];
+    }
 }
 
 - (void)didReceiveMemoryWarning

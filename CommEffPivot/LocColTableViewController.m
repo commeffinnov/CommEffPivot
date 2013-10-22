@@ -125,14 +125,6 @@
         
         // Get destination view
         LocColPresentationListViewController *vc = [segue destinationViewController];
-        
-        // Get button tag number (or do whatever you need to do here, based on your object
-        // LocColCourse *course = (LocColCourse *)sender;
-        
-        // Pass the information to your destination view
-        
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSLog(@"%lu", indexPath.row);
         [vc setCourse:sender];
     }
     
@@ -140,13 +132,7 @@
 
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath*)indexPath {
-    
-    //Build a segue string based on the selected cell
-//    NSString *segueString = [NSString stringWithFormat:@"%@Segue",
-//                             [self.courseData objectAtIndex:indexPath.row]];
-    
-    //Since contentArray is an array of strings, we can use it to build a unique
-    //identifier for each segue.
+    // Bind the Details with the information Button
     
     NSLog(@"gdddd!!!");
     //Perform a segue.
