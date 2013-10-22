@@ -10,12 +10,14 @@
 
 @interface LocColPresentation : NSObject
 
-@property (nonatomic,weak) NSString * ID;
-@property (nonatomic,weak) NSString * title;
-@property (nonatomic,weak) NSString * content;
+@property (nonatomic, strong) NSString * ID;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSString * type;
 
 -(id) initWithAttributes: (NSString *) pid
             title:(NSString *) title
-            content:(NSString *) content;
+            content:(NSString *) content
+            type: (NSString *) ptype;
 
 @end

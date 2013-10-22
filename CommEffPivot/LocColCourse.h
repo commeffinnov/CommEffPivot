@@ -13,7 +13,7 @@
 @property (nonatomic,strong) NSString * courseID;
 @property (nonatomic,strong) NSString * courseName;
 @property (nonatomic,strong) NSString * createdTime;
-@property (nonatomic,strong) NSMutableArray *presentations;
+@property (atomic,strong) NSMutableArray *presentations;
 
 
 -(id) initWithAttributes:(NSString *) courseid

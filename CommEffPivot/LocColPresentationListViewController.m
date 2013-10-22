@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Yitong Zhou. All rights reserved.
 //
 
+#import "AFHTTPRequestOperation.h"
+
 #import "LocColPresentationListViewController.h"
 #import "LocColPresentation.h"
 
@@ -26,8 +28,12 @@
 
 - (void)viewDidLoad
 {
+    self.tableView.dataSource = self;
+    if (self.course.presentations == nil){
+        [self.course setPresentations:[[NSMutableArray alloc]init]];
+        [self fetchPresentationList];
+    }
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -45,79 +51,54 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    if (self.course != nil){
-        return [self.course.presentations count];
-    }else
-        return 0;
+    return [self.course.presentations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"presentationCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    LocColPresentation * presentation=[self.course.presentations objectAtIndex:0];
+    LocColPresentation * presentation= (LocColPresentation *)[self.course.presentations objectAtIndex:indexPath.row];
     cell.textLabel.text = presentation.title;
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) fetchPresentationList
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    
+        NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"courses/presentations/",self.course.courseID];
+        NSURL *URL = [NSURL URLWithString:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        op.responseSerializer = [AFJSONResponseSerializer serializer];
+        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSArray *array = responseObject;
+            
+            for (NSDictionary *dict in array){
+                NSString *content = [dict valueForKey:@"content"];
+                NSString *title = [dict valueForKey:@"title"];
+                NSString *pid = [dict valueForKey:@"_id"];
+                NSString *ptype = [dict valueForKey:@"type"];
+                LocColPresentation *presentation = [[LocColPresentation alloc] initWithAttributes:pid title:title content:content type:ptype];
+                [self.course.presentations addObject:(id) presentation];
+
+            }
+            [self.tableView reloadData];
+            
+            NSLog(@"JSON: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+        }];
+        [[NSOperationQueue mainQueue] addOperation:op];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

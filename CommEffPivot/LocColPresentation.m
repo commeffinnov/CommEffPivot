@@ -13,11 +13,12 @@
 -(id) initWithAttributes:(NSString *)pid
                         title:(NSString *)title
                         content:(NSString *)content
+                        type: (NSString *) ptype
 {
-    self = [super init];
     [self setID:pid];
     [self setTitle:title];
     [self setContent:content];
+    [self setType:ptype];
     return self;
 }
 

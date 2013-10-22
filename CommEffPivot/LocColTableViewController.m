@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Yitong Zhou. All rights reserved.
 //
 
+#import "LocColAPIRequest.h"
 #import "LocColPresentation.h"
 #import "LocColCourseList.h"
 #import "LocColCourse.h"
@@ -130,8 +131,9 @@
         
         // Pass the information to your destination view
         
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        [vc setCourse:[self.courseData objectAtIndex:0]];
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        NSLog(@"%lu", indexPath.row);
+        [vc setCourse:sender];
     }
     
 }
