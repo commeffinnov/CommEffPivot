@@ -17,6 +17,8 @@
 
 @interface LocColTableViewController ()
 
+
+
 @end
 
 @implementation LocColTableViewController
@@ -51,6 +53,8 @@
     [self fetchCourseList];
     
     [super viewDidLoad];
+    
+
     
 }
 
@@ -125,12 +129,15 @@
         // LocColCourse *course = (LocColCourse *)sender;
         
         // Pass the information to your destination view
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [vc setCourse:[self.courseData objectAtIndex:0]];
     }
+    
 }
 
 - (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+accessoryButtonTappedForRowWithIndexPath:(NSIndexPath*)indexPath {
     
     //Build a segue string based on the selected cell
 //    NSString *segueString = [NSString stringWithFormat:@"%@Segue",

@@ -66,7 +66,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     LocColPresentation * presentation=[self.course.presentations objectAtIndex:0];
     cell.textLabel.text = presentation.title;
-    
     return cell;
 }
 
