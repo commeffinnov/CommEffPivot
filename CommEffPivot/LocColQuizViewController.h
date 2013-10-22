@@ -13,5 +13,6 @@
 @interface LocColQuizViewController : UIViewController
 
 @property (strong, nonatomic) LocColPresentation *presentation;
+@property (strong, nonatomic) NSMutableArray *questions;
 
 @end

@@ -14,7 +14,7 @@
 
 @synthesize presentation=_presentation;
 
-@synthesize titleLabel, contentLabel;
+@synthesize titleLabel, contentText;
 
 - (id)initWithCourseID:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = _presentation.title;
-    self.contentLabel.text = _presentation.content;
+    self.contentText.text = _presentation.content;
     self.titleLabel.text = [NSString stringWithFormat:@"%@", _presentation.title];
 }
 
@@ -50,7 +50,7 @@
     self.presentation = nil;
     
     self.titleLabel = nil;
-    self.contentLabel = nil;
+    self.contentText = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
