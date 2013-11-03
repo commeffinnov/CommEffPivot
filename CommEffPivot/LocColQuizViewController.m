@@ -133,7 +133,6 @@ bool _endOfQuiz = false;
                                                              delegate:self
                                                     cancelButtonTitle:@"Done"
                                                     otherButtonTitles:nil, nil];
-        
         [alertFinish show];
     }
     
@@ -199,7 +198,7 @@ bool _endOfQuiz = false;
     if([title isEqualToString:@"Next question"])
     {
         NSLog(@"Next question button was selected.");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
     }
 }
 

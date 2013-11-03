@@ -9,6 +9,7 @@
 #ifndef CommEffPivot_Constants_h
 #define CommEffPivot_Constants_h
 
-#define API_HOST @"http://106.187.92.216:9898/"
+//#define API_HOST @"http://106.187.92.216:9898/"
+#define API_HOST @"http://localhost:9898/"
 
 #endif

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PTPusher.h"
 #import "LocColPresentation.h"
 
 @interface LocColPresentationViewController : UIViewController
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UITextView *contentText;
+@property (strong) PTPusher *client;
 
 @end
