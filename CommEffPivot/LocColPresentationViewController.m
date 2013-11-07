@@ -6,18 +6,22 @@
 //  Copyright (c) 2013 Yitong Zhou. All rights reserved.
 //
 
-#import "LocColPresentationViewController.h"
+#import "AFHTTPRequestOperation.h"
+#import "PTPusher.h"
+#import "PTPusherEvent.h"
+#import "PTPusherChannel.h"
 
+#import "LocColPresentationViewController.h"
 #import "LocColPresentation.h"
 #import "LocColPresentationSlide.h"
 
 
 @implementation LocColPresentationViewController
-
 {
-    NSArray *slidesList;
     NSUInteger currentPage;
     bool controlMode;
+    PTPusher *_client;
+    PTPusherChannel *_channel;
 }
 
 
@@ -26,7 +30,8 @@
 @synthesize titleLabel, contentText;
 
 
-- (IBAction)goToNext:(id)sender {
+- (IBAction)goToNext:(id)sender
+{
     if(!controlMode){
         [self goToSlide:currentPage+1];}
 }
@@ -40,27 +45,13 @@
 
 -(void) goToSlide:(NSUInteger) index
 {
-    NSUInteger count = [slidesList count];
+    NSUInteger count = [self.slides count];
     if (index < count){
-        LocColPresentationSlide *currentSlide = [slidesList objectAtIndex:index];
+        LocColPresentationSlide *currentSlide = [self.slides objectAtIndex:index];
         self.titleLabel.text = currentSlide.title;
         self.contentText.text = currentSlide.content;
         currentPage = index;
     }
-}
-
-- (void)createSlides
-
-{
-
-    
-    LocColPresentationSlide *slide1 =[[LocColPresentationSlide alloc] initWithAttributes:@"1" presentationID:@"1" index:@"0" type:@"static" title:@"SVM" content: @"some content here........"];
-    LocColPresentationSlide *slide2 =[[LocColPresentationSlide alloc] initWithAttributes:@"2" presentationID:@"1" index:@"1" type:@"static" title:@"NB" content: @"some content here........"];
-    LocColPresentationSlide *slide3 =[[LocColPresentationSlide alloc] initWithAttributes:@"3" presentationID:@"1" index:@"2" type:@"static" title:@"KNN" content: @"some content here........"];
-    LocColPresentationSlide *slide4 =[[LocColPresentationSlide alloc] initWithAttributes:@"4" presentationID:@"1" index:@"3" type:@"static" title:@"Regression" content: @"some content here........"];
-    
-    slidesList=[NSArray arrayWithObjects:slide1, slide2,slide3, slide4,nil];
-    
 }
 
 - (id)initWithCourseID:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,7 +67,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -86,14 +76,10 @@
 {
     [super viewDidLoad];
     self.navigationController.toolbarHidden = NO;
-    [self createSlides];
+    [self loadSlides];
     currentPage = 0;
     [self goToSlide: currentPage];
     controlMode=NO;
-   
-    
-   
-    
 }
 
 - (void)viewDidUnload
@@ -104,6 +90,61 @@
     
     self.titleLabel = nil;
     self.contentText = nil;
+}
+
+- (void)loadSlides
+{
+    NSString *url = [NSString stringWithFormat:@"%@presentations/%@/slides",API_HOST, self.presentation.ID];
+    NSURL *URL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *array = responseObject;
+        self.slides = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in array){
+            NSString * ID = [dict valueForKey:@"_id"];
+            NSString * presentationID = [dict valueForKey:@"presentationID"];
+            NSString * index = [dict valueForKey:@"index"];
+            NSString * type = [dict valueForKey:@"type"];
+            NSString * title = [dict valueForKey:@"title"];
+            NSString * content = [dict valueForKey:@"content"];
+            LocColPresentationSlide *slide = [[LocColPresentationSlide alloc] initWithAttributes : ID
+                    presentationID : presentationID
+                             index : index
+                              type : type
+                             title : title
+                           content : content];
+            [self.slides addObject:(id) slide];
+        }
+        [self goToSlide:(0)];
+        [self subscribeChannels];
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+    }];
+    [[NSOperationQueue mainQueue] addOperation:op];
+}
+
+- (void) subscribeChannels
+{
+    _client = [PTPusher pusherWithKey:PUSHER_APP_KEY delegate:self encrypted:YES];
+    [self subscribePresentationChannel];
+}
+
+- (void) subscribePresentationChannel
+{
+    NSString *channelName = [NSString stringWithFormat:@"presentation_channel_%@", self.presentation.ID];
+    _channel = [_client subscribeToChannelNamed:channelName];
+    [_channel bindToEventNamed:@"slide_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
+        NSLog(@"%@ slide_event", channelEvent.data);
+        NSDictionary *dict = channelEvent.data;
+        NSString *index = [dict valueForKey:@"index"];
+        int i = [index intValue];
+        [self goToSlide:i];
+    }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
