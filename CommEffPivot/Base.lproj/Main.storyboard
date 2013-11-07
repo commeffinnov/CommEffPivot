@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8Ir-3d-xou">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hzJ-lm-tOF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="51" y="351" width="211" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1647058874" green="0.5176470876" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="tintColor" patternImage="4EBE0F2D-68F2-4316-8D01-D99513410293" colorSpace="pattern"/>
+                                <color key="tintColor" patternImage="DD53FBBB-2CDF-46C2-A034-F66D6A32656F" colorSpace="pattern"/>
                                 <size key="titleShadowOffset" width="7" height="7"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
@@ -498,7 +498,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="4EBE0F2D-68F2-4316-8D01-D99513410293" width="256" height="256">
+        <image name="C-Logo.png" width="498" height="402"/>
+        <image name="DD53FBBB-2CDF-46C2-A034-F66D6A32656F" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4874,9 +4875,9 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNHk1NACoABAAIdXiB
 /2dqdP9sb3n/am13/2ptd/9wc33/d3qD/2ptd/9qbXf/e32D/2xudf9sb3n/bnF7/2xvef9qbHP/dXd9
 /3V3ff9qbXf/c3V8/25wd/9wc33/bnB3/3Z4fP9ucXv/cHJ5/3Byef93eoP/bnF7/3Bzff9sb3n/cHN9
 /wAOAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABAC2AQMAAwAAAAEAAQAAAQYAAwAAAAEA
-AgAAAREABAAAAAIABADGARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
-BAC+ARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAQABADOh3MABwAADEgABADWAAAAAAAIAAgA
-CAAIAAIAAAACAAAAAAAIAAIACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYA
+AgAAAREABAAAAAIABAC+ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
+BADGARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAQABADOh3MABwAADEgABADWAAAAAAAIAAgA
+CAAIAAAACAACAAgAAgAAAAIAAAABAAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYA
 MQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1IUCAgAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAAAVAAAAAzZGVzYwAAAYQA
 AABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAAAiwAAAAUYlhZWgAAAkAA
@@ -4940,7 +4941,7 @@ BA6JAAQOkQAEDp4ABA6jAAQOpQAEDqcABA6sAAQOtAAEDrcABA68AAQOxAAEDscABA7ZAAQO3AAEDuEA
 AAAAAAAEAQAAAAAAAABCAAAAAAAAAAAAAAAAAAQO4w
 </mutableData>
         </image>
-        <image name="C-Logo.png" width="498" height="402"/>
+        <image name="presentation 2.png" width="30" height="30"/>
         <image name="presentation 2.png" width="30" height="30"/>
         <image name="spanner 2.png" width="30" height="30"/>
     </resources>

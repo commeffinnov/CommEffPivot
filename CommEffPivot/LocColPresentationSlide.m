@@ -19,8 +19,6 @@
                    title:(NSString *)title
                  content:(NSString *)content
                    //cTime:(NSDate *) cTime
-
-
 {
     [self setID:pid];
     [self setPresentationID:presentationID];
