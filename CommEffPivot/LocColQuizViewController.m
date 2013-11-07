@@ -129,7 +129,7 @@ bool _endOfQuiz = false;
     //If the user reached the end of the quiz, show an alert box.
     if (_endOfQuiz==true){
         UIAlertView *alertFinish = [[UIAlertView alloc] initWithTitle:@"Quiz finished"
-                                                              message:[NSString stringWithFormat:@"Congratulation, you've finished all the questions"]
+                                                              message:[NSString stringWithFormat:@"Congratulations, you've finished all the questions"]
                                                              delegate:self
                                                     cancelButtonTitle:@"Done"
                                                     otherButtonTitles:nil, nil];

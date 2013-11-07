@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114EF149181592DB0083E092 /* LocColQuizViewController.m */; };
 		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
+		11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E43865182816D8007914F9 /* LocColPresentationSlide.m */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
@@ -55,6 +56,8 @@
 		114EF148181592DB0083E092 /* LocColQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColQuizViewController.h; sourceTree = "<group>"; };
 		114EF149181592DB0083E092 /* LocColQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColQuizViewController.m; sourceTree = "<group>"; };
 		11E0BEF61810AB7A004E4650 /* C-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C-Logo.png"; sourceTree = "<group>"; };
+		11E43864182816D8007914F9 /* LocColPresentationSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColPresentationSlide.h; sourceTree = "<group>"; };
+		11E43865182816D8007914F9 /* LocColPresentationSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentationSlide.m; sourceTree = "<group>"; };
 		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -223,6 +226,8 @@
 				6574B901180631BE007F9E19 /* LocColCourse.h */,
 				6574B902180631BE007F9E19 /* LocColCourse.m */,
 				6574B90418063243007F9E19 /* LocColPresentation.h */,
+				11E43864182816D8007914F9 /* LocColPresentationSlide.h */,
+				11E43865182816D8007914F9 /* LocColPresentationSlide.m */,
 				6574B90518063243007F9E19 /* LocColPresentation.m */,
 				6583D04C180643920067422B /* LocColCourseList.h */,
 				6583D04D180643920067422B /* LocColCourseList.m */,
@@ -450,6 +455,7 @@
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
 				114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */,
 				6582DCA3180CB42A004C9C6A /* LocColFetchCourseListOperation.m in Sources */,
+				11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */,
 				65E9420F18067A3D0018BF2A /* LocColTableViewController.m in Sources */,
 				65B18C8218166A8600FC6411 /* LocColQuestion.m in Sources */,
 				6583D04E180643920067422B /* LocColCourseList.m in Sources */,
