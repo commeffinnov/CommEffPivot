@@ -13,6 +13,7 @@
 
 @interface LocColPresentationViewController : UIViewController
 @property (nonatomic, strong) LocColPresentation *presentation;
+@property (nonatomic, strong) NSMutableArray *slides;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRight;
@@ -20,5 +21,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *contentText;
+
+-(void) loadSlides;
 
 @end

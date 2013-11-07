@@ -74,7 +74,6 @@
 
 -(void) fetchPresentationList
 {
-    
         NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"courses/presentations/",self.course.courseID];
         NSURL *URL = [NSURL URLWithString:url];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -110,6 +109,7 @@
         // Get destination view
         LocColPresentationViewController *vc = [segue destinationViewController];
         
+        // Load Presentation Object
         [vc setPresentation: (LocColPresentation *)sender];
     }else if ([[segue identifier] isEqualToString:@"GoToQuizDetails"]) {
         LocColQuizViewController *vc = [segue destinationViewController];
