@@ -10,10 +10,14 @@
 
 #import "LocColPresentation.h"
 
+
 @interface LocColPresentationViewController : UIViewController
 @property (nonatomic, strong) LocColPresentation *presentation;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRight;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeLeft;
+
 
 @property (weak, nonatomic) IBOutlet UITextView *contentText;
 
