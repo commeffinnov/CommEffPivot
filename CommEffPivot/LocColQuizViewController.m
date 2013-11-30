@@ -5,6 +5,11 @@
 //  Created by Cassandra Shi on 10/21/13.
 //  Copyright (c) 2013 Yitong Zhou. All rights reserved.
 //
+#import "AFHTTPRequestOperation.h"
+
+#import "PTPusher.h"
+#import "PTPusherEvent.h"
+#import "PTPusherChannel.h"
 
 #import "LocColQuizViewController.h"
 #import "LocColQuestion.h"
@@ -20,6 +25,9 @@
     __weak IBOutlet UIButton *choiceD;
     NSInteger seconds;
     NSTimer * timer;
+    
+    PTPusher *_client;
+    PTPusherChannel *_channel;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *timerDisplay;
@@ -63,7 +71,7 @@ bool _endOfQuiz = false;
 
 //(NSDictionary*)result_data
 
--(void) display_result
+-(void) display_result: (NSMutableArray*) result
 {
     NSString* correct_ans = @"B";
     self.resultA.text=@"10%/10";
@@ -158,19 +166,19 @@ bool _endOfQuiz = false;
     
     if (sender == choiceA){
         NSLog(@"choice a selected");
-        [self setupQuestion:_nextQuestionIndex];
+        //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceB){
         NSLog(@"choice b selected");
-        [self setupQuestion:_nextQuestionIndex];
+        //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceC){
         NSLog(@"choice c selected");
-        [self setupQuestion:_nextQuestionIndex];
+       //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceD){
         NSLog(@"choice d selected");
-        [self setupQuestion:_nextQuestionIndex];
+        //[self setupQuestion:_nextQuestionIndex];
     }
 
     //If the user reached the end of the quiz, show an alert box.
@@ -201,7 +209,7 @@ bool _endOfQuiz = false;
         [choiceB setHidden:true];
         [choiceC setHidden:true];
         [choiceD setHidden:true];
-        [self startQuiz];
+        //[self startQuiz];
         
         
     }
@@ -263,7 +271,8 @@ bool _endOfQuiz = false;
     // 2
     if (seconds == 0) {
         [timer invalidate];
-        [self display_result];
+        // Load DATA:
+        [self display_result:nil];
         /**
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time is up!"
                                                         message:[NSString stringWithFormat:@"Your time is up"]
@@ -288,6 +297,53 @@ bool _endOfQuiz = false;
         NSLog(@"Next question button was selected.");
         [self setupQuestion:_nextQuestionIndex];
     }
+}
+
+// Channels and Events
+- (void) subscribeChannels
+{
+    _client = [PTPusher pusherWithKey:PUSHER_APP_KEY delegate:self encrypted:YES];
+    [self subscribePresentationChannel];
+}
+
+- (void) subscribePresentationChannel
+{
+    NSString *channelName = [NSString stringWithFormat:@"presentation_channel_%@", self.presentation.ID];
+    _channel = [_client subscribeToChannelNamed:channelName];
+    
+    [_channel bindToEventNamed:@"slide_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
+        NSLog(@"%@ slide_event", channelEvent.data);
+        NSDictionary *dict = channelEvent.data;
+        NSString *index = [dict valueForKey:@"index"];
+        int i = [index intValue];
+        if (i == 0){
+            [self startQuiz];
+        }else{
+            [self setupQuestion:i];
+        }
+    }];
+    
+    [_channel bindToEventNamed:@"question_stats_event" handleWithBlock:^(PTPusherEvent *channelEvent){
+        NSLog(@"%@ slide_status_event", channelEvent.data);
+        NSDictionary *dict = channelEvent.data;
+        NSMutableArray * result = [[NSMutableArray alloc] init];
+        NSDictionary *count = [dict valueForKey:@"count"];
+        for (int i = 0; i < [self.questions count]; i++){
+            NSString *key = [NSString stringWithFormat:@"%d", i];
+            [result addObject:[count valueForKey:key]];
+        }
+        [self display_result:result];
+    }];
+    
+    [_channel bindToEventNamed:@"slide_status_event" handleWithBlock:^
+        (PTPusherEvent *channelEvent){
+        NSLog(@"%@ slide_status_event", channelEvent.data);
+        NSDictionary *dict = channelEvent.data;
+            bool active = (bool)[dict valueForKey:@"active"];
+            if (!active){
+                [timer invalidate];
+            }
+    }];
 }
 
 @end
