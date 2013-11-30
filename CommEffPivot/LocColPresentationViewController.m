@@ -80,8 +80,9 @@
     self.navigationController.toolbarHidden = NO;
     [self loadSlides];
     currentPage = 0;
+    
     [self goToSlide: currentPage];
-    controlMode=YES;
+    controlMode = YES;
 }
 
 - (void)viewDidUnload
