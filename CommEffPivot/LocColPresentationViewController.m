@@ -33,12 +33,14 @@
 - (IBAction)goToNext:(id)sender
 {
     if(!controlMode){
+        NSLog(@"contorl mode");
         [self goToSlide:currentPage+1];}
 }
 
 
 - (IBAction)goToPrev:(id)sender {
     if (!controlMode){
+        NSLog(@"contorl mode");
         [self goToSlide:currentPage-1];}
 }
 
@@ -79,7 +81,7 @@
     [self loadSlides];
     currentPage = 0;
     [self goToSlide: currentPage];
-    controlMode=NO;
+    controlMode=YES;
 }
 
 - (void)viewDidUnload
@@ -144,6 +146,7 @@
         NSString *index = [dict valueForKey:@"index"];
         int i = [index intValue];
         [self goToSlide:i];
+        controlMode=YES;
     }];
 }
 

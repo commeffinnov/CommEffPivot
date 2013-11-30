@@ -28,7 +28,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *bText;
 @property (weak, nonatomic) IBOutlet UILabel *cText;
 @property (weak, nonatomic) IBOutlet UILabel *dText;
-
+@property (strong, nonatomic) IBOutlet UILabel *resultA;
+@property (strong, nonatomic) IBOutlet UILabel *resultB;
+@property (strong, nonatomic) IBOutlet UILabel *resultC;
+@property (strong, nonatomic) IBOutlet UILabel *resultD;
 
 @end
 
@@ -47,6 +50,49 @@ bool _endOfQuiz = false;
         // Custom initialization
     }
     return self;
+}
+
+-(void) disable_options
+{
+    [choiceA setEnabled:NO];
+    [choiceB setEnabled:NO];
+    [choiceC setEnabled:NO];
+    [choiceD setEnabled:NO];
+    
+}
+
+//(NSDictionary*)result_data
+
+-(void) display_result
+{
+    NSString* correct_ans = @"B";
+    self.resultA.text=@"10%/10";
+    self.resultB.text=@"10%/10";
+    self.resultC.text=@"30%/20";
+    self.resultD.text=@"50%/50";
+    self.timerDisplay.text=@"14/20 students chose the correct answer";
+    if ([correct_ans isEqualToString:@"A"]){
+        self.aText.textColor = [UIColor greenColor];
+    }
+    if ([correct_ans isEqualToString:@"B"]){
+        self.bText.textColor = [UIColor greenColor];
+    }
+    if ([correct_ans isEqualToString:@"C"]){
+        self.cText.textColor = [UIColor greenColor];
+    }
+    if ([correct_ans isEqualToString:@"D"]){
+        self.dText.textColor = [UIColor greenColor];
+    }
+    
+}
+
+-(void) enable_options
+{
+    [choiceA setEnabled:YES];
+    [choiceB setEnabled:YES];
+    [choiceC setEnabled:YES];
+    [choiceD setEnabled:YES];
+    
 }
 
 - (void) fetchQuestions
@@ -70,9 +116,10 @@ bool _endOfQuiz = false;
                 question.number = [dict valueForKey:@"number"];
                 question.selections = [dict valueForKey:@"selections"];
                 [self.questions addObject:(id) question];
-                
             }
             [self setupQuestion:0];
+            
+           
             
             NSLog(@"JSON: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -145,9 +192,45 @@ bool _endOfQuiz = false;
     [super viewDidLoad];
     if (self.questions == nil){
         [self setQuestions:[[NSMutableArray alloc] init]];
-        [self fetchQuestions];
+        [self.aText setHidden:true];
+        [self.bText setHidden:true];
+        [self.cText setHidden:true];
+        [self.dText setHidden:true];
+        self.questionDisplay.text  = @"Please wait for the instructor.";
+        [choiceA setHidden:true];
+        [choiceB setHidden:true];
+        [choiceC setHidden:true];
+        [choiceD setHidden:true];
+        [self startQuiz];
+        
+        
     }
 }
+
+- (void)startQuiz
+{
+    [self enable_options];
+    [self.aText setHidden:false];
+    [self.bText setHidden:false];
+    [self.cText setHidden:false];
+    [self.dText setHidden:false];
+    [choiceA setHidden:false];
+    [choiceB setHidden:false];
+    [choiceC setHidden:false];
+    [choiceD setHidden:false];
+    [self fetchQuestions];
+
+}
+
+//-(void)displayResult{
+  //  NSDictionary *result_data = [NSDictionary dictionaryWithObjects:@"1",@"2",@"3"];
+    //[self performSegueWithIdentifier:@"GoToPresentationList"
+      //                        sender:[self.courseData objectAtIndex:indexPath.row]];
+    
+//}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -180,6 +263,8 @@ bool _endOfQuiz = false;
     // 2
     if (seconds == 0) {
         [timer invalidate];
+        [self display_result];
+        /**
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time is up!"
                                                         message:[NSString stringWithFormat:@"Your time is up"]
                                                        delegate:self
@@ -187,6 +272,8 @@ bool _endOfQuiz = false;
                                               otherButtonTitles:@"Next question", nil];
         
         [alert show];
+        */
+        [self disable_options];
         
     }
     
@@ -199,7 +286,7 @@ bool _endOfQuiz = false;
     if([title isEqualToString:@"Next question"])
     {
         NSLog(@"Next question button was selected.");
-        [self setupQuestion:1];
+        [self setupQuestion:_nextQuestionIndex];
     }
 }
 

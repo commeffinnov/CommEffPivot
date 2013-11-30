@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114EF149181592DB0083E092 /* LocColQuizViewController.m */; };
+		115B7C7018499E7400E4C51F /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 115B7C6F18499E7400E4C51F /* chat.jpg */; };
 		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
 		11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E43865182816D8007914F9 /* LocColPresentationSlide.m */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		114EF148181592DB0083E092 /* LocColQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColQuizViewController.h; sourceTree = "<group>"; };
 		114EF149181592DB0083E092 /* LocColQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColQuizViewController.m; sourceTree = "<group>"; };
+		115B7C6F18499E7400E4C51F /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chat.jpg; path = images/chat.jpg; sourceTree = "<group>"; };
 		11E0BEF61810AB7A004E4650 /* C-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C-Logo.png"; sourceTree = "<group>"; };
 		11E43864182816D8007914F9 /* LocColPresentationSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColPresentationSlide.h; sourceTree = "<group>"; };
 		11E43865182816D8007914F9 /* LocColPresentationSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentationSlide.m; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		65E94214180708770018BF2A /* images */ = {
 			isa = PBXGroup;
 			children = (
+				115B7C6F18499E7400E4C51F /* chat.jpg */,
 				65E9421718070D400018BF2A /* presentation 2.png */,
 				65E9421518070D240018BF2A /* spanner 2.png */,
 			);
@@ -393,6 +396,7 @@
 				65E9421818070D400018BF2A /* presentation 2.png in Resources */,
 				11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */,
 				650876E617F6420400E3C4F4 /* Main.storyboard in Resources */,
+				115B7C7018499E7400E4C51F /* chat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
