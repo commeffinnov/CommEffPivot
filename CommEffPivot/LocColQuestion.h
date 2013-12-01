@@ -10,7 +10,8 @@
 
 @interface LocColQuestion : NSObject
 
-@property  (strong, nonatomic) NSNumber *number;
+@property  (strong, nonatomic) NSNumber *index;
+@property  (strong, nonatomic) NSNumber *answer;
 @property  (strong, nonatomic) NSString *presentationID;
 @property  (strong, nonatomic) NSString *title;
 @property  (strong, nonatomic) NSString *ID;

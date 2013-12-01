@@ -25,6 +25,7 @@
     __weak IBOutlet UIButton *choiceD;
     NSInteger seconds;
     NSTimer * timer;
+    bool pauseTimer;
     
     PTPusher *_client;
     PTPusherChannel *_channel;
@@ -71,7 +72,7 @@ bool _endOfQuiz = false;
 
 //(NSDictionary*)result_data
 
--(void) display_result: (NSMutableArray*) result
+-(void) displayQuestionStats: (NSMutableArray*) result
 {
     NSString* correct_ans = @"B";
     self.resultA.text=@"10%/10";
@@ -94,6 +95,14 @@ bool _endOfQuiz = false;
     
 }
 
+-(void) hideQuestionStats
+{
+    self.resultA.text=@"";
+    self.resultB.text=@"";
+    self.resultC.text=@"";
+    self.resultD.text=@"";
+}
+
 -(void) enable_options
 {
     [choiceA setEnabled:YES];
@@ -106,34 +115,34 @@ bool _endOfQuiz = false;
 - (void) fetchQuestions
 {
     if (self.presentation != nil){
+        // Init URL
         NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"questions/",self.presentation.ID];
         NSURL *URL = [NSURL URLWithString:url];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
+        // Init Operation Object
         AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        // Setup serializable format as JSON
         op.responseSerializer = [AFJSONResponseSerializer serializer];
+        // Bind Events
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray *array = responseObject;
-            
             for (NSDictionary *dict in array){
                 LocColQuestion *question = [[LocColQuestion alloc] init];
                 question.title = [dict valueForKey:@"title"];
                 question.ctime = [dict valueForKey:@"ctime"];
                 question.ID = [dict valueForKey:@"_id"];
                 question.presentationID = [dict valueForKey:@"presentationID"];
-                question.number = [dict valueForKey:@"number"];
+                question.index = [dict valueForKey:@"index"];
+                question.answer = [dict valueForKey:@"answer"];
                 question.selections = [dict valueForKey:@"selections"];
                 [self.questions addObject:(id) question];
             }
             [self setupQuestion:0];
-            
-           
-            
             NSLog(@"JSON: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
             NSLog(@"Error: %@", error);
         }];
+        // Add Operation to queue
         [[NSOperationQueue mainQueue] addOperation:op];
     }
 }
@@ -145,6 +154,8 @@ bool _endOfQuiz = false;
     }else{
         _endOfQuiz = false;
     }
+    // Hide previous question stats
+    [self hideQuestionStats];
     // Get current question
     LocColQuestion *question = [self.questions objectAtIndex:questionIndex];
     if (question != nil){
@@ -213,6 +224,7 @@ bool _endOfQuiz = false;
         
         
     }
+    [self subscribeChannels];
 }
 
 - (void)startQuiz
@@ -248,44 +260,38 @@ bool _endOfQuiz = false;
 
 - (void)setupTimer:(NSInteger) second;
 {
-    // 1
+    // Clean old data
+    if (timer != nil){
+        [timer invalidate];
+    }
+    // Init
     seconds = second;
-    
-    
-    // 2
     self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li", (long)seconds];
-    
-    // 3
+    pauseTimer = false;
+    // Bind Interval
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                              target:self
-                                           selector:@selector(subtractTime)
+                                           selector:@selector(runTimer)
                                            userInfo:nil
                                             repeats:YES];
 }
 
-- (void)subtractTime {
-    // 1
-    seconds--;
-    self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li",(long)seconds];
-    
-    // 2
-    if (seconds == 0) {
-        [timer invalidate];
-        // Load DATA:
-        [self display_result:nil];
-        /**
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time is up!"
-                                                        message:[NSString stringWithFormat:@"Your time is up"]
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"Next question", nil];
-        
-        [alert show];
-        */
-        [self disable_options];
-        
+- (void)runTimer
+{
+    if (!pauseTimer && seconds > 0){
+        seconds--;
+        self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li",(long)seconds];
     }
-    
+}
+
+- (void) pauseTimer
+{
+    pauseTimer = true;
+}
+
+- (void) resumeTimer
+{
+    pauseTimer = false;
 }
 
 
@@ -311,6 +317,7 @@ bool _endOfQuiz = false;
     NSString *channelName = [NSString stringWithFormat:@"presentation_channel_%@", self.presentation.ID];
     _channel = [_client subscribeToChannelNamed:channelName];
     
+    // Move Question/Slide Event
     [_channel bindToEventNamed:@"slide_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
         NSLog(@"%@ slide_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
@@ -323,25 +330,31 @@ bool _endOfQuiz = false;
         }
     }];
     
+    // Show Question Statistics Event
     [_channel bindToEventNamed:@"question_stats_event" handleWithBlock:^(PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
         NSMutableArray * result = [[NSMutableArray alloc] init];
-        NSDictionary *count = [dict valueForKey:@"count"];
-        for (int i = 0; i < [self.questions count]; i++){
-            NSString *key = [NSString stringWithFormat:@"%d", i];
-            [result addObject:[count valueForKey:key]];
+        NSArray *count = [dict valueForKey:@"count"];
+        for (int i = 0; i < [count count]; i++){
+            NSLog(@"%@", count);
+            NSNumber *num =[count objectAtIndex:i];
+            [result addObject:num];
         }
-        [self display_result:result];
+        [self displayQuestionStats:result];
     }];
     
+    // Pause/Resume Timer Event
     [_channel bindToEventNamed:@"slide_status_event" handleWithBlock:^
         (PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
-            bool active = (bool)[dict valueForKey:@"active"];
-            if (!active){
-                [timer invalidate];
+            NSNumber *active = [dict valueForKey:@"active"];
+            NSLog(@"active:%@ ", active);
+            if ([active intValue] == 0){
+                [self pauseTimer];
+            }else{
+                [self resumeTimer];
             }
     }];
 }
