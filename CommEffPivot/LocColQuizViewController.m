@@ -121,7 +121,8 @@ bool _endOfQuiz = false;
                 question.ctime = [dict valueForKey:@"ctime"];
                 question.ID = [dict valueForKey:@"_id"];
                 question.presentationID = [dict valueForKey:@"presentationID"];
-                question.number = [dict valueForKey:@"number"];
+                question.index = [dict valueForKey:@"index"];
+                question.answer = [dict valueForKey:@"answer"];
                 question.selections = [dict valueForKey:@"selections"];
                 [self.questions addObject:(id) question];
             }
@@ -213,6 +214,7 @@ bool _endOfQuiz = false;
         
         
     }
+    [self subscribeChannels];
 }
 
 - (void)startQuiz
@@ -271,8 +273,6 @@ bool _endOfQuiz = false;
     // 2
     if (seconds == 0) {
         [timer invalidate];
-        // Load DATA:
-        [self display_result:nil];
         /**
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time is up!"
                                                         message:[NSString stringWithFormat:@"Your time is up"]
@@ -327,10 +327,11 @@ bool _endOfQuiz = false;
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
         NSMutableArray * result = [[NSMutableArray alloc] init];
-        NSDictionary *count = [dict valueForKey:@"count"];
-        for (int i = 0; i < [self.questions count]; i++){
-            NSString *key = [NSString stringWithFormat:@"%d", i];
-            [result addObject:[count valueForKey:key]];
+        NSArray *count = [dict valueForKey:@"count"];
+        for (int i = 0; i < [count count]; i++){
+            NSLog(@"%@", count);
+            NSNumber *num =[count objectAtIndex:i];
+            [result addObject:num];
         }
         [self display_result:result];
     }];
@@ -339,8 +340,8 @@ bool _endOfQuiz = false;
         (PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
-            bool active = (bool)[dict valueForKey:@"active"];
-            if (!active){
+            int active = (int)[dict valueForKey:@"active"];
+            if (active == 0){
                 [timer invalidate];
             }
     }];
