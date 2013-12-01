@@ -25,6 +25,7 @@
     __weak IBOutlet UIButton *choiceD;
     NSInteger seconds;
     NSTimer * timer;
+    bool pauseTimer;
     
     PTPusher *_client;
     PTPusherChannel *_channel;
@@ -250,42 +251,38 @@ bool _endOfQuiz = false;
 
 - (void)setupTimer:(NSInteger) second;
 {
-    // 1
+    // Clean old data
+    if (timer != nil){
+        [timer invalidate];
+    }
+    // Init
     seconds = second;
-    
-    
-    // 2
     self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li", (long)seconds];
-    
-    // 3
+    pauseTimer = false;
+    // Bind Interval
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                              target:self
-                                           selector:@selector(subtractTime)
+                                           selector:@selector(runTimer)
                                            userInfo:nil
                                             repeats:YES];
 }
 
-- (void)subtractTime {
-    // 1
-    seconds--;
-    self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li",(long)seconds];
-    
-    // 2
-    if (seconds == 0) {
-        [timer invalidate];
-        /**
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time is up!"
-                                                        message:[NSString stringWithFormat:@"Your time is up"]
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"Next question", nil];
-        
-        [alert show];
-        */
-        [self disable_options];
-        
+- (void)runTimer
+{
+    if (!pauseTimer && seconds > 0){
+        seconds--;
+        self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li",(long)seconds];
     }
-    
+}
+
+- (void) pauseTimer
+{
+    pauseTimer = true;
+}
+
+- (void) resumeTimer
+{
+    pauseTimer = false;
 }
 
 
@@ -311,6 +308,7 @@ bool _endOfQuiz = false;
     NSString *channelName = [NSString stringWithFormat:@"presentation_channel_%@", self.presentation.ID];
     _channel = [_client subscribeToChannelNamed:channelName];
     
+    // Move Question/Slide Event
     [_channel bindToEventNamed:@"slide_event" handleWithBlock:^(PTPusherEvent *channelEvent) {
         NSLog(@"%@ slide_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
@@ -323,6 +321,7 @@ bool _endOfQuiz = false;
         }
     }];
     
+    // Show Question Statistics Event
     [_channel bindToEventNamed:@"question_stats_event" handleWithBlock:^(PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
@@ -336,13 +335,17 @@ bool _endOfQuiz = false;
         [self display_result:result];
     }];
     
+    // Pause/Resume Timer Event
     [_channel bindToEventNamed:@"slide_status_event" handleWithBlock:^
         (PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
-            int active = (int)[dict valueForKey:@"active"];
-            if (active == 0){
-                [timer invalidate];
+            NSNumber *active = [dict valueForKey:@"active"];
+            NSLog(@"active:%@ ", active);
+            if ([active intValue] == 0){
+                [self pauseTimer];
+            }else{
+                [self resumeTimer];
             }
     }];
 }
