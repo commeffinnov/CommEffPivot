@@ -72,7 +72,7 @@ bool _endOfQuiz = false;
 
 //(NSDictionary*)result_data
 
--(void) display_result: (NSMutableArray*) result
+-(void) displayQuestionStats: (NSMutableArray*) result
 {
     NSString* correct_ans = @"B";
     self.resultA.text=@"10%/10";
@@ -95,6 +95,14 @@ bool _endOfQuiz = false;
     
 }
 
+-(void) hideQuestionStats
+{
+    self.resultA.text=@"";
+    self.resultB.text=@"";
+    self.resultC.text=@"";
+    self.resultD.text=@"";
+}
+
 -(void) enable_options
 {
     [choiceA setEnabled:YES];
@@ -107,15 +115,17 @@ bool _endOfQuiz = false;
 - (void) fetchQuestions
 {
     if (self.presentation != nil){
+        // Init URL
         NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"questions/",self.presentation.ID];
         NSURL *URL = [NSURL URLWithString:url];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
+        // Init Operation Object
         AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        // Setup serializable format as JSON
         op.responseSerializer = [AFJSONResponseSerializer serializer];
+        // Bind Events
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray *array = responseObject;
-            
             for (NSDictionary *dict in array){
                 LocColQuestion *question = [[LocColQuestion alloc] init];
                 question.title = [dict valueForKey:@"title"];
@@ -128,14 +138,11 @@ bool _endOfQuiz = false;
                 [self.questions addObject:(id) question];
             }
             [self setupQuestion:0];
-            
-           
-            
             NSLog(@"JSON: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
             NSLog(@"Error: %@", error);
         }];
+        // Add Operation to queue
         [[NSOperationQueue mainQueue] addOperation:op];
     }
 }
@@ -147,6 +154,8 @@ bool _endOfQuiz = false;
     }else{
         _endOfQuiz = false;
     }
+    // Hide previous question stats
+    [self hideQuestionStats];
     // Get current question
     LocColQuestion *question = [self.questions objectAtIndex:questionIndex];
     if (question != nil){
@@ -332,7 +341,7 @@ bool _endOfQuiz = false;
             NSNumber *num =[count objectAtIndex:i];
             [result addObject:num];
         }
-        [self display_result:result];
+        [self displayQuestionStats:result];
     }];
     
     // Pause/Resume Timer Event
