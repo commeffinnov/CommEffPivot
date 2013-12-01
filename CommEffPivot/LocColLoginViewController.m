@@ -33,12 +33,10 @@
     NSString *pass = [self.display text];
     
     NSString * login_url = [NSString stringWithFormat: @"%@%@", API_HOST, @"login"];
-    
-    LocColAPIRequest *request = [[LocColAPIRequest alloc] init];
-    
+        
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:(id) username, (id)@"username", (id)pass, (id)@"password", nil ];
     
-    NSData *data = [request get: login_url data: dict method: @"POST"];
+    NSData *data = [LocColAPIRequest get: login_url data: dict method: @"POST"];
     
     NSString *results = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     // check password

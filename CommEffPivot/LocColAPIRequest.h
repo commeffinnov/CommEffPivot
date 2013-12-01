@@ -10,8 +10,12 @@
 
 @interface LocColAPIRequest : NSObject
 
-- (NSData *) get:(NSString *) url_str
++ (NSData *) get:(NSString *) url_str
             data: (NSDictionary *) dict
           method: (NSString *) method;
+
++ (void) send:(NSString *) url_str
+         data: (NSDictionary *) dict
+       method: (NSString *) method;
 
 @end

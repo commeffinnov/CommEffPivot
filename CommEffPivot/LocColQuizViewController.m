@@ -11,6 +11,7 @@
 #import "PTPusherEvent.h"
 #import "PTPusherChannel.h"
 
+#import "LocColAPIRequest.h"
 #import "LocColQuizViewController.h"
 #import "LocColQuestion.h"
 #import "LocColPresentation.h"
@@ -74,11 +75,13 @@ bool _endOfQuiz = false;
 
 -(void) displayQuestionStats: (NSMutableArray*) result
 {
-    NSString* correct_ans = @"B";
-    self.resultA.text=@"10%/10";
-    self.resultB.text=@"10%/10";
-    self.resultC.text=@"30%/20";
-    self.resultD.text=@"50%/50";
+    LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
+    NSString* correct_ans = [NSString stringWithFormat:@"%@", question.answer];
+    
+    self.resultA.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:1],[result objectAtIndex:0]];
+    self.resultB.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:2],[result objectAtIndex:0]];
+    self.resultC.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:3],[result objectAtIndex:0]];
+    self.resultD.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:4],[result objectAtIndex:0]];
     self.timerDisplay.text=@"14/20 students chose the correct answer";
     if ([correct_ans isEqualToString:@"A"]){
         self.aText.textColor = [UIColor greenColor];
@@ -174,24 +177,31 @@ bool _endOfQuiz = false;
     
     //After user made a choice, stop the timer. 
     [timer invalidate];
+    int selectedNum = -1;
     
     if (sender == choiceA){
         NSLog(@"choice a selected");
+        selectedNum = 1;
         //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceB){
         NSLog(@"choice b selected");
+        selectedNum = 2;
         //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceC){
         NSLog(@"choice c selected");
+        selectedNum = 3;
        //[self setupQuestion:_nextQuestionIndex];
     }
     if (sender == choiceD){
         NSLog(@"choice d selected");
+        selectedNum = 4;
         //[self setupQuestion:_nextQuestionIndex];
     }
-
+    LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
+    [self sendAnswer:selectedNum questionID:question.ID];
+    
     //If the user reached the end of the quiz, show an alert box.
     if (_endOfQuiz==true){
         UIAlertView *alertFinish = [[UIAlertView alloc] initWithTitle:@"Quiz finished"
@@ -203,6 +213,19 @@ bool _endOfQuiz = false;
         [alertFinish show];
     }
     
+}
+
+- (void) sendAnswer:(int) selectedNum
+         questionID: (NSString *) questionID
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",API_HOST, @"answers"];
+    NSNumber *choice = [NSNumber numberWithInt:selectedNum];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            (id)@"111", (id)@"uid",
+                            (id)choice, (id)@"selectedNum",
+                            (id)questionID, (id)@"questionID",
+                            nil];
+    [LocColAPIRequest send:url data:params method:@"POST"];
 }
 
 
@@ -220,9 +243,6 @@ bool _endOfQuiz = false;
         [choiceB setHidden:true];
         [choiceC setHidden:true];
         [choiceD setHidden:true];
-        //[self startQuiz];
-        
-        
     }
     [self subscribeChannels];
 }
@@ -239,7 +259,6 @@ bool _endOfQuiz = false;
     [choiceC setHidden:false];
     [choiceD setHidden:false];
     [self fetchQuestions];
-
 }
 
 //-(void)displayResult{

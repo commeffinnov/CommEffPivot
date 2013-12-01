@@ -12,4 +12,6 @@
 
 @property NSOperationQueue *requestQueue;
 
++ (id) sharedRequestQueue;
+
 @end
