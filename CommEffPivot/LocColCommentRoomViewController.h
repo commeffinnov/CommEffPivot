@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocColCommentRoomViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface LocColCommentRoomViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @end

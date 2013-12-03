@@ -18,7 +18,6 @@
 //@property (strong, nonatomic) IBOutlet UITextView *comment_display;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UITextField *textfield;
-@property (strong, nonatomic) IBOutlet UITableViewCell *messageCell;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSString *userName;
 
@@ -27,15 +26,11 @@
 
 @implementation LocColCommentRoomViewController
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"calllllled");
+    //return _tableview.editing ? [_messages count]+1 : [_messages count];
     return [_messages count];
 }
 
@@ -43,6 +38,7 @@
 {
     LocColChatCell *cell = (LocColChatCell *)[tableView dequeueReusableCellWithIdentifier: @"Cell"];
     NSUInteger row = [_messages count]-[indexPath row]-1;
+    NSLog(@"current row is %d, current message count is %d" , row, _messages.count );
     
     if (row < _messages.count){
         NSString *chatText = [[_messages objectAtIndex:row] objectForKey:@"text"];
@@ -52,10 +48,11 @@
         cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
         cell.chatContent.font = [UIFont fontWithName:@"Helvetica" size:14.0];
         cell.chatContent.text = chatText;
+        NSLog(@"cell returned");
         [cell.chatContent sizeToFit];
         
         
-        cell.chatUser.text = [[_messages objectAtIndex:row] objectForKey:@"userName"];
+        //cell.chatUser.text = [[_messages objectAtIndex:row] objectForKey:@"userName"];
     }
     return cell;
 }
@@ -120,18 +117,23 @@
     
     if (_textfield.text.length>0) {
         // updating the table immediately
-        NSArray *keys = [NSArray arrayWithObjects:@"text", @"userName", @"date", nil];
-        NSArray *objects = [NSArray arrayWithObjects:_textfield.text, _userName, [NSDate date], nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"text", nil];
+        NSArray *objects = [NSArray arrayWithObjects:_textfield.text, nil];
+        NSLog(@"text field's content is: %d", _textfield.text);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
         [_messages addObject:dictionary];
         
         NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
         NSIndexPath *newPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [insertIndexPaths addObject:newPath];
+        NSLog(@"numberOfRowsInSection: %d", [self tableView: self.tableview numberOfRowsInSection:0]);
         [_tableview beginUpdates];
+        NSLog(@"numberOfRowsInSection: %d", [self tableView: self.tableview numberOfRowsInSection:0]);
         [_tableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
         [_tableview endUpdates];
         [_tableview reloadData];
+        
+        
 
         //Send this new message to server
     
@@ -141,6 +143,8 @@
     
     return NO;
 }
+
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -165,6 +169,35 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
+- (IBAction)sendButtonPressed:(id)sender {
+    
+    
+    if (_textfield.text.length>0) {
+        // updating the table immediately
+        NSArray *keys = [NSArray arrayWithObjects:@"text", nil];
+        NSArray *objects = [NSArray arrayWithObjects:_textfield.text, nil];
+        NSLog(@"text field's content is: %d", _textfield.text);
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [_messages addObject:dictionary];
+        
+        NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
+        NSIndexPath *newPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [insertIndexPaths addObject:newPath];
+        NSLog(@"numberOfRowsInSection: %d", [self tableView: self.tableview numberOfRowsInSection:0]);
+        [_tableview beginUpdates];
+        NSLog(@"numberOfRowsInSection: %d", [self tableView: self.tableview numberOfRowsInSection:0]);
+        [_tableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+        [_tableview endUpdates];
+        [_tableview reloadData];
+        
+        
+        
+        //Send this new message to server
+        
+        _textfield.text = @"";
+    }
+
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -177,34 +210,20 @@
 }
 
 
--(void) registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-
-
--(void) freeKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
 
 - (void)viewWillAppear:(BOOL)animated
 
 {
     
     [super viewWillAppear:animated];
-    if (_messages == nil){
-        _messages= [[NSMutableArray alloc] init];
-    }
+    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self freeKeyboardNotifications];
+    
+    
 }
 
 -(IBAction) textFieldDoneEditing : (id) sender
@@ -232,9 +251,26 @@
 //    self.tableview.dataSource = table_controller;
 //    self.textfield.delegate = self;
     [super viewDidLoad];
-    self.textfield.delegate = self;
+    [self.tableview setDelegate:self];
+    self.tableview.dataSource=self;
+    [self.textfield setDelegate:self];
+    if (_messages == nil){
+        _messages= [[NSMutableArray alloc] init];
+        // NSDictionary* dict = [NSDictionary dictionaryWithObjects:@[@"This is a text message"]
+        //                                            forKeys:@[@"text"]];
+        // [_messages addObject:dict];
+        
+    }
+    
+    NSArray *keys = [NSArray arrayWithObjects:@"text", nil];
+    NSArray *objects = [NSArray arrayWithObjects:_textfield.text, nil];
+    NSLog(@"text field's content is: %d", _textfield.text);
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [_messages addObject:dictionary];
+    
+    [self.tableview reloadData];
     _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self registerForKeyboardNotifications];;
+  
     
     
 
