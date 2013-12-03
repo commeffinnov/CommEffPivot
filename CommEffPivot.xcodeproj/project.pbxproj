@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114EF149181592DB0083E092 /* LocColQuizViewController.m */; };
 		115B7C7018499E7400E4C51F /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 115B7C6F18499E7400E4C51F /* chat.jpg */; };
+		118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E9B02184D68B6008467D9 /* LocColChatCell.m */; };
 		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
 		11E34145184AE4B7003A1940 /* LocColCommentRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */; };
-		11E3414E184AFF00003A1940 /* LocColChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E3414D184AFF00003A1940 /* LocColChatTableViewController.m */; };
 		11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E43865182816D8007914F9 /* LocColPresentationSlide.m */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
@@ -59,11 +59,11 @@
 		114EF148181592DB0083E092 /* LocColQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColQuizViewController.h; sourceTree = "<group>"; };
 		114EF149181592DB0083E092 /* LocColQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColQuizViewController.m; sourceTree = "<group>"; };
 		115B7C6F18499E7400E4C51F /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chat.jpg; path = images/chat.jpg; sourceTree = "<group>"; };
+		118E9B01184D68B6008467D9 /* LocColChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColChatCell.h; sourceTree = "<group>"; };
+		118E9B02184D68B6008467D9 /* LocColChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColChatCell.m; sourceTree = "<group>"; };
 		11E0BEF61810AB7A004E4650 /* C-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C-Logo.png"; sourceTree = "<group>"; };
 		11E34143184AE4B7003A1940 /* LocColCommentRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColCommentRoomViewController.h; sourceTree = "<group>"; };
 		11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCommentRoomViewController.m; sourceTree = "<group>"; };
-		11E3414C184AFF00003A1940 /* LocColChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColChatTableViewController.h; sourceTree = "<group>"; };
-		11E3414D184AFF00003A1940 /* LocColChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColChatTableViewController.m; sourceTree = "<group>"; };
 		11E43864182816D8007914F9 /* LocColPresentationSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColPresentationSlide.h; sourceTree = "<group>"; };
 		11E43865182816D8007914F9 /* LocColPresentationSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentationSlide.m; sourceTree = "<group>"; };
 		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,8 +273,8 @@
 				658116651810F6AC0042978B /* LocColPresentationListViewController.m */,
 				11E34143184AE4B7003A1940 /* LocColCommentRoomViewController.h */,
 				11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */,
-				11E3414C184AFF00003A1940 /* LocColChatTableViewController.h */,
-				11E3414D184AFF00003A1940 /* LocColChatTableViewController.m */,
+				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
+				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -463,6 +463,7 @@
 				658116661810F6AC0042978B /* LocColPresentationListViewController.m in Sources */,
 				6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */,
 				6574B903180631BE007F9E19 /* LocColCourse.m in Sources */,
+				118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */,
 				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
 				65F55353180CEE1E003D4425 /* LocColPresentationViewController.m in Sources */,
 				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
@@ -474,7 +475,6 @@
 				65B18C8218166A8600FC6411 /* LocColQuestion.m in Sources */,
 				6583D04E180643920067422B /* LocColCourseList.m in Sources */,
 				6574B9091806331B007F9E19 /* LocColAPIRequest.m in Sources */,
-				11E3414E184AFF00003A1940 /* LocColChatTableViewController.m in Sources */,
 				11E34145184AE4B7003A1940 /* LocColCommentRoomViewController.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
 				6574B90618063243007F9E19 /* LocColPresentation.m in Sources */,

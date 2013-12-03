@@ -7,15 +7,20 @@
 //
 
 #import "LocColCommentRoomViewController.h"
-#import "LocColChatTableViewController.h"
+#import "LocColChatCell.h"
 
 @interface LocColCommentRoomViewController ()
+{
+    BOOL reloading;
+}
+
+
 //@property (strong, nonatomic) IBOutlet UITextView *comment_display;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UITextField *textfield;
 @property (strong, nonatomic) IBOutlet UITableViewCell *messageCell;
-@property (strong, nonatomic) IBOutlet UITableViewController *mytbvc;
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSString *userName;
 
 
 @end
@@ -31,34 +36,60 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    NSInteger num = self.tableview.editing ? _messages.count + 1: _messages.count;
-    NSLog(@"num: %d", num);
-    return num;
+    return [_messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = @"Cell";
-    BOOL b_addCell = (indexPath.row == _messages.count);
-    if (b_addCell) // set identifier for add row
-        CellIdentifier = @"AddCell";
+    LocColChatCell *cell = (LocColChatCell *)[tableView dequeueReusableCellWithIdentifier: @"Cell"];
+    NSUInteger row = [_messages count]-[indexPath row]-1;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        if (!b_addCell) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+    if (row < _messages.count){
+        NSString *chatText = [[_messages objectAtIndex:row] objectForKey:@"text"];
+        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        UIFont *font = [UIFont systemFontOfSize:14];
+        CGSize size = [chatText sizeWithFont:font constrainedToSize:CGSizeMake(225.0f, 1000.0f) lineBreakMode:UILineBreakModeCharacterWrap];
+        cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
+        cell.chatContent.font = [UIFont fontWithName:@"Helvetica" size:14.0];
+        cell.chatContent.text = chatText;
+        [cell.chatContent sizeToFit];
+        
+        
+        cell.chatUser.text = [[_messages objectAtIndex:row] objectForKey:@"userName"];
     }
-    
-    if (b_addCell)
-        cell.textLabel.text = @"Add ...";
-    else
-        cell.textLabel.text = [_messages objectAtIndex:indexPath.row];
-    
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellText = [[_messages objectAtIndex:_messages.count-indexPath.row-1] objectForKey:@"text"];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:14.0];
+    CGSize constraintSize = CGSizeMake(225.0f, MAXFLOAT);
+    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    return labelSize.height + 40;
+}
+
+- (void)reloadTableViewDataSource{
+    
+    //  should be calling your tableviews data source model to reload
+    //  put here just for demo
+    reloading = YES;
+    [_tableview reloadData];
+}
+
+- (void)doneLoadingTableViewData{
+    
+    //  model should call this when its done loading
+    reloading = NO;
+    
+}
+
+
+
+
+
+
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == _messages.count)
@@ -85,6 +116,29 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    
+    
+    if (_textfield.text.length>0) {
+        // updating the table immediately
+        NSArray *keys = [NSArray arrayWithObjects:@"text", @"userName", @"date", nil];
+        NSArray *objects = [NSArray arrayWithObjects:_textfield.text, _userName, [NSDate date], nil];
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [_messages addObject:dictionary];
+        
+        NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
+        NSIndexPath *newPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [insertIndexPaths addObject:newPath];
+        [_tableview beginUpdates];
+        [_tableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+        [_tableview endUpdates];
+        [_tableview reloadData];
+
+        //Send this new message to server
+    
+        _textfield.text = @"";
+    }
+    
+    
     return NO;
 }
 
@@ -122,6 +176,53 @@
     return self;
 }
 
+
+-(void) registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+
+-(void) freeKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+
+{
+    
+    [super viewWillAppear:animated];
+    if (_messages == nil){
+        _messages= [[NSMutableArray alloc] init];
+    }
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [self freeKeyboardNotifications];
+}
+
+-(IBAction) textFieldDoneEditing : (id) sender
+{
+    NSLog(@"the text content%@",_textfield.text);
+    [sender resignFirstResponder];
+    [_textfield resignFirstResponder];
+}
+
+-(IBAction) backgroundTap:(id) sender
+{
+    [self.textfield resignFirstResponder];
+}
+
+
+
+
+
 - (void)viewDidLoad
 
 
@@ -131,19 +232,12 @@
 //    self.tableview.dataSource = table_controller;
 //    self.textfield.delegate = self;
     [super viewDidLoad];
-    if (_messages == nil){
-        _messages= [[NSMutableArray alloc]init];
-        }
-    [self setEditing:true];
-    [self setEditing:true];    
-    [self setEditing:true];
+    self.textfield.delegate = self;
+    _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self registerForKeyboardNotifications];;
     
     
-    
-   
-   
-   
-    
+
     
     //self.comment_display.text = [self.comment_display.text stringByAppendingString:@"this is appened string"];
 	// Do any additional setup after loading the view.
