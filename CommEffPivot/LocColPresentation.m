@@ -14,11 +14,13 @@
                         title:(NSString *)title
                         content:(NSString *)content
                         type: (NSString *) ptype
+                        status: (NSNumber *) status
 {
     [self setID:pid];
     [self setTitle:title];
     [self setContent:content];
     [self setType:ptype];
+    [self setStatus: status];
     return self;
 }
 

@@ -19,7 +19,7 @@
 
 
 @interface LocColQuizViewController (){
-    NSInteger currentQuestionID;
+    int currentQuestionID;
     __weak IBOutlet UIButton *choiceA;
     __weak IBOutlet UIButton *choiceB;
     __weak IBOutlet UIButton *choiceC;
@@ -30,6 +30,9 @@
     
     PTPusher *_client;
     PTPusherChannel *_channel;
+    UIColor * selectedColor;
+    UIColor * disabledColor;
+    UIColor * normalColor;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *timerDisplay;
@@ -49,7 +52,7 @@
 
 // private variables:
 @synthesize presentation=_presentation;
-NSInteger _nextQuestionIndex = 0;
+int _nextQuestionIndex = 0;
 bool _endOfQuiz = false;
 
 
@@ -62,7 +65,7 @@ bool _endOfQuiz = false;
     return self;
 }
 
--(void) disable_options
+-(void) disableOptions
 {
     [choiceA setEnabled:NO];
     [choiceB setEnabled:NO];
@@ -74,28 +77,81 @@ bool _endOfQuiz = false;
 //(NSDictionary*)result_data
 
 -(void) displayQuestionStats: (NSMutableArray*) result
+                  questionID: (NSString *) questionID
 {
+    // Get current question
     LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
+    // If the Statistics are not for the current question
+    if ([question.ID isEqualToString:questionID] == NO){
+        int qindex = 0;
+        // Search out the corresponding question
+        while (qindex < [self.questions count]){
+            question = [self.questions objectAtIndex:qindex];
+            if ([question.ID isEqualToString:questionID] == NO){
+                // Not Found
+                qindex += 1;
+            }else{
+                // Found
+                break;
+            }
+        }
+        // If the corresponding question is not found
+        // Do nothing, return
+        if (qindex >= [self.questions count]){
+            return;
+        }
+        
+        // Otherwise, we move our page to that question
+        [self setupQuestion:qindex];
+    }
+    // Disable Options
+    [self disableOptions];
+    // Hide the timer
+    [self hideTimer];
+    
     NSString* correct_ans = [NSString stringWithFormat:@"%@", question.answer];
+    
+    // Complement the result set if it is less than length of 5
+    while ([result count] < 1+4){
+        [result addObject:[NSNumber numberWithInt:0]];
+    }
     
     self.resultA.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:1],[result objectAtIndex:0]];
     self.resultB.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:2],[result objectAtIndex:0]];
     self.resultC.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:3],[result objectAtIndex:0]];
     self.resultD.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:4],[result objectAtIndex:0]];
     self.timerDisplay.text=@"14/20 students chose the correct answer";
-    if ([correct_ans isEqualToString:@"A"]){
+    
+    NSLog(@"correct answer:%@", correct_ans);
+    
+    if ([correct_ans isEqualToString:@"1"]){
         self.aText.textColor = [UIColor greenColor];
     }
-    if ([correct_ans isEqualToString:@"B"]){
+    if ([correct_ans isEqualToString:@"2"]){
         self.bText.textColor = [UIColor greenColor];
     }
-    if ([correct_ans isEqualToString:@"C"]){
+    if ([correct_ans isEqualToString:@"3"]){
         self.cText.textColor = [UIColor greenColor];
     }
-    if ([correct_ans isEqualToString:@"D"]){
+    if ([correct_ans isEqualToString:@"4"]){
         self.dText.textColor = [UIColor greenColor];
     }
     
+}
+
+- (void) setOptionsToDefault
+{
+    [choiceA setTitleColor:normalColor forState:UIControlStateNormal];
+    [choiceB setTitleColor:normalColor forState:UIControlStateNormal];
+    [choiceC setTitleColor:normalColor forState:UIControlStateNormal];
+    [choiceD setTitleColor:normalColor forState:UIControlStateNormal];
+    
+    [self.aText setTextColor:[UIColor blackColor]];
+    [self.bText setTextColor:[UIColor blackColor]];
+    [self.cText setTextColor:[UIColor blackColor]];
+    [self.dText setTextColor:[UIColor blackColor]];
+    
+    [self enableOptions];
 }
 
 -(void) hideQuestionStats
@@ -106,7 +162,7 @@ bool _endOfQuiz = false;
     self.resultD.text=@"";
 }
 
--(void) enable_options
+-(void) enableOptions
 {
     [choiceA setEnabled:YES];
     [choiceB setEnabled:YES];
@@ -117,15 +173,24 @@ bool _endOfQuiz = false;
 
 - (void) fetchQuestions
 {
+    // init List of Questions
+    if (self.questions == nil){
+        self.questions = [[NSMutableArray alloc] init];
+    }
+    
+    // Load questions if presentation is not nil
     if (self.presentation != nil){
         // Init URL
         NSString *url = [NSString stringWithFormat:@"%@%@%@",API_HOST, @"questions/",self.presentation.ID];
         NSURL *URL = [NSURL URLWithString:url];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
         // Init Operation Object
         AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        
         // Setup serializable format as JSON
         op.responseSerializer = [AFJSONResponseSerializer serializer];
+        
         // Bind Events
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray *array = responseObject;
@@ -140,23 +205,41 @@ bool _endOfQuiz = false;
                 question.selections = [dict valueForKey:@"selections"];
                 [self.questions addObject:(id) question];
             }
-            [self setupQuestion:0];
             NSLog(@"JSON: %@", responseObject);
+            
+            // Go to current Slide if status is not -1
+            int presentation_status = [self.presentation.status intValue];
+            if (presentation_status == -1){
+                [self setToDefault];
+                NSLog(@"Not started yet");
+            }else{
+                [self setupQuestion: presentation_status];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
+        
         // Add Operation to queue
         [[NSOperationQueue mainQueue] addOperation:op];
     }
 }
 
-- (void) setupQuestion:(NSInteger)questionIndex{
+- (void) setupQuestion:(int)questionIndex{
+    // TODO: this part is questionable as we should handle the logic better
+    //       - Yitong
     if (questionIndex >= [self.questions count]){
         _endOfQuiz = true;
         return;
     }else{
         _endOfQuiz = false;
     }
+    /////////////////////////
+    
+    // Only operate when the index and questions array is legit
+    if (self.questions == nil || questionIndex < 0 || questionIndex >= [self.questions count]){
+        return;
+    }
+    
     // Hide previous question stats
     [self hideQuestionStats];
     // Get current question
@@ -169,6 +252,13 @@ bool _endOfQuiz = false;
         self.dText.text = [question.selections objectAtIndex:3];
         [self setupTimer:30];
     }
+    // Ensure options are valid and restored to default state
+    [self setOptionsToDefault];
+    [self showOptions];
+    
+    // Current Question index
+    currentQuestionID = questionIndex;
+    // Next Question index
     _nextQuestionIndex = questionIndex+1;
 }
 
@@ -199,8 +289,37 @@ bool _endOfQuiz = false;
         selectedNum = 4;
         //[self setupQuestion:_nextQuestionIndex];
     }
-    LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
-    [self sendAnswer:selectedNum questionID:question.ID];
+    
+    //If pressed
+    if (sender.enabled){
+        // Send out Answer
+        LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
+        [self sendAnswer:selectedNum questionID:question.ID];
+        
+        // Disable Options
+        [self disableOptions];
+        [sender setEnabled:true];
+        
+        // -------------
+        // Change Colors
+        // -------------
+        // Highlight current choice
+        UILabel *label = nil;
+        if (selectedNum == 1){
+            label = self.aText;
+        }else if (selectedNum == 2){
+            label = self.bText;
+        }else if (selectedNum == 3){
+            label = self.cText;
+        }else if (selectedNum == 4){
+            label = self.dText;
+        }
+        if (label != nil){
+            [label setTextColor:selectedColor];
+            [sender setTitleColor:selectedColor forState:UIControlStateNormal];
+        }
+        // ---------------
+    }
     
     //If the user reached the end of the quiz, show an alert box.
     if (_endOfQuiz==true){
@@ -232,24 +351,28 @@ bool _endOfQuiz = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.questions == nil){
-        [self setQuestions:[[NSMutableArray alloc] init]];
-        [self.aText setHidden:true];
-        [self.bText setHidden:true];
-        [self.cText setHidden:true];
-        [self.dText setHidden:true];
-        self.questionDisplay.text  = @"Please wait for the instructor.";
-        [choiceA setHidden:true];
-        [choiceB setHidden:true];
-        [choiceC setHidden:true];
-        [choiceD setHidden:true];
-    }
+    // Color set up
+    selectedColor= [UIColor colorWithRed:153.0/256.0 green:0.0/256.0 blue:0.0/256.0 alpha:1.0];
+    disabledColor= [UIColor colorWithRed:110.0/256.0 green:110.0/256.0 blue:110.0/256.0 alpha:1.0];
+    normalColor = [UIColor colorWithRed:53.0/256.0 green:53.0/256.0 blue:255.0/256.0 alpha:1.0];
+    
+    
+    [self initQuiz];
     [self subscribeChannels];
 }
 
-- (void)startQuiz
+- (void)initQuiz
 {
-    [self enable_options];
+    // Made options selectable
+    [self enableOptions];
+    // Hide options
+    [self hideOptions];
+    // Read a list of questions
+    [self fetchQuestions];
+}
+
+- (void) showOptions
+{
     [self.aText setHidden:false];
     [self.bText setHidden:false];
     [self.cText setHidden:false];
@@ -258,18 +381,36 @@ bool _endOfQuiz = false;
     [choiceB setHidden:false];
     [choiceC setHidden:false];
     [choiceD setHidden:false];
-    [self fetchQuestions];
 }
 
-//-(void)displayResult{
-  //  NSDictionary *result_data = [NSDictionary dictionaryWithObjects:@"1",@"2",@"3"];
-    //[self performSegueWithIdentifier:@"GoToPresentationList"
-      //                        sender:[self.courseData objectAtIndex:indexPath.row]];
-    
-//}
+- (void) hideOptions
+{
+    [self.aText setHidden:true];
+    [self.bText setHidden:true];
+    [self.cText setHidden:true];
+    [self.dText setHidden:true];
+    [choiceA setHidden:true];
+    [choiceB setHidden:true];
+    [choiceC setHidden:true];
+    [choiceD setHidden:true];
+}
 
 
+- (void) setToDefault
+{
+    [self hideTimer];
+    [self hideOptions];
+    // Tag the currentQuestionID to -1
+    currentQuestionID = -1;
+    self.questionDisplay.text  = @"Please wait for the instructor.";
+}
 
+- (void) resetToDefault
+{
+    [self hideTimer];
+    [self hideOptions];
+    self.questionDisplay.text  = @"Quiz Finished. Please wait for the instructor.";
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -283,6 +424,10 @@ bool _endOfQuiz = false;
     if (timer != nil){
         [timer invalidate];
     }
+    
+    // Show timer
+    [self showTimer];
+    
     // Init
     seconds = second;
     self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li", (long)seconds];
@@ -295,11 +440,25 @@ bool _endOfQuiz = false;
                                             repeats:YES];
 }
 
+- (void) hideTimer
+{
+    [self.timerDisplay setHidden:true];
+}
+
+- (void) showTimer
+{
+    [self.timerDisplay setHidden:false];
+}
+
 - (void)runTimer
 {
     if (!pauseTimer && seconds > 0){
         seconds--;
         self.timerDisplay.text = [NSString stringWithFormat:@"Time: %li",(long)seconds];
+    }
+    
+    if (seconds == 0){
+        [self disableOptions];
     }
 }
 
@@ -342,10 +501,11 @@ bool _endOfQuiz = false;
         NSDictionary *dict = channelEvent.data;
         NSString *index = [dict valueForKey:@"index"];
         int i = [index intValue];
-        if (i == 0){
-            [self startQuiz];
-        }else{
+        if (i >= 0){
             [self setupQuestion:i];
+        }else if (i == -1){
+            [self resetToDefault];
+            NSLog(@"Goto Default Page");
         }
     }];
     
@@ -355,12 +515,13 @@ bool _endOfQuiz = false;
         NSDictionary *dict = channelEvent.data;
         NSMutableArray * result = [[NSMutableArray alloc] init];
         NSArray *count = [dict valueForKey:@"count"];
+        NSString *questionID = [dict valueForKey:@"questionID"];
         for (int i = 0; i < [count count]; i++){
             NSLog(@"%@", count);
             NSNumber *num =[count objectAtIndex:i];
             [result addObject:num];
         }
-        [self displayQuestionStats:result];
+        [self displayQuestionStats:result questionID:questionID];
     }];
     
     // Pause/Resume Timer Event
@@ -368,13 +529,13 @@ bool _endOfQuiz = false;
         (PTPusherEvent *channelEvent){
         NSLog(@"%@ slide_status_event", channelEvent.data);
         NSDictionary *dict = channelEvent.data;
-            NSNumber *active = [dict valueForKey:@"active"];
-            NSLog(@"active:%@ ", active);
-            if ([active intValue] == 0){
-                [self pauseTimer];
-            }else{
-                [self resumeTimer];
-            }
+        NSNumber *active = [dict valueForKey:@"active"];
+        NSLog(@"active:%@ ", active);
+        if ([active intValue] == 0){
+            [self pauseTimer];
+        }else{
+            [self resumeTimer];
+        }
     }];
 }
 

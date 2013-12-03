@@ -14,10 +14,12 @@
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * content;
 @property (nonatomic, strong) NSString * type;
+@property (nonatomic, strong) NSNumber * status;
 
 -(id) initWithAttributes: (NSString *) pid
             title:(NSString *) title
             content:(NSString *) content
-            type: (NSString *) ptype;
+            type: (NSString *) ptype
+            status: (NSNumber *) status;
 
 @end
