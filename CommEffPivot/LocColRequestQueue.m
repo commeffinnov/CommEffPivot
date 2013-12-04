@@ -11,6 +11,13 @@
 @implementation LocColRequestQueue
 @synthesize requestQueue = _requestQueue;
 
+/*
+ TODO:
+ this singleton Queue has bugs
+ before fixing it.
+ 
+ plz use [NSOperationQueue mainQueue]
+*/
 
 /*
  You can access the request queue by using:

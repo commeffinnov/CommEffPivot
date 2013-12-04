@@ -88,7 +88,8 @@
                 NSString *title = [dict valueForKey:@"title"];
                 NSString *pid = [dict valueForKey:@"_id"];
                 NSString *ptype = [dict valueForKey:@"type"];
-                LocColPresentation *presentation = [[LocColPresentation alloc] initWithAttributes:pid title:title content:content type:ptype];
+                NSNumber *status = [dict valueForKey:@"status"];
+                LocColPresentation *presentation = [[LocColPresentation alloc] initWithAttributes:pid title:title content:content type:ptype status: status];
                 [self.course.presentations addObject:(id) presentation];
 
             }
