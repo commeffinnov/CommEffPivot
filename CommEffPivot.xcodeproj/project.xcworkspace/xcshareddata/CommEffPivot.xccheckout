@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>194ABE61-2EBB-4DA5-BD63-FCFDEDD3850D</string>
+	<string>C223C96B-DCD8-4F77-B620-787D32296AA1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CommEffPivot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>28D68C1F-D1F5-49BA-8383-5FC21A56A00C</key>
+		<key>0DBB7715-92AC-4935-98F0-23A9EA028764</key>
 		<string>https://github.com/timyitong/CommEffPivot.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CommEffPivot.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>28D68C1F-D1F5-49BA-8383-5FC21A56A00C</key>
+		<key>0DBB7715-92AC-4935-98F0-23A9EA028764</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>28D68C1F-D1F5-49BA-8383-5FC21A56A00C</string>
+	<string>0DBB7715-92AC-4935-98F0-23A9EA028764</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>28D68C1F-D1F5-49BA-8383-5FC21A56A00C</string>
+			<string>0DBB7715-92AC-4935-98F0-23A9EA028764</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CommEffPivot</string>
 		</dict>
