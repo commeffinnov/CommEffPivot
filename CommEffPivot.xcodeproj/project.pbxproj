@@ -10,6 +10,7 @@
 		114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114EF149181592DB0083E092 /* LocColQuizViewController.m */; };
 		115B7C7018499E7400E4C51F /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 115B7C6F18499E7400E4C51F /* chat.jpg */; };
 		118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E9B02184D68B6008467D9 /* LocColChatCell.m */; };
+		118E9B06184ECC59008467D9 /* LocColComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E9B05184ECC59008467D9 /* LocColComment.m */; };
 		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
 		11E34145184AE4B7003A1940 /* LocColCommentRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */; };
 		11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E43865182816D8007914F9 /* LocColPresentationSlide.m */; };
@@ -61,6 +62,8 @@
 		115B7C6F18499E7400E4C51F /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chat.jpg; path = images/chat.jpg; sourceTree = "<group>"; };
 		118E9B01184D68B6008467D9 /* LocColChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColChatCell.h; sourceTree = "<group>"; };
 		118E9B02184D68B6008467D9 /* LocColChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColChatCell.m; sourceTree = "<group>"; };
+		118E9B04184ECC59008467D9 /* LocColComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColComment.h; sourceTree = "<group>"; };
+		118E9B05184ECC59008467D9 /* LocColComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColComment.m; sourceTree = "<group>"; };
 		11E0BEF61810AB7A004E4650 /* C-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C-Logo.png"; sourceTree = "<group>"; };
 		11E34143184AE4B7003A1940 /* LocColCommentRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColCommentRoomViewController.h; sourceTree = "<group>"; };
 		11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCommentRoomViewController.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				6583D04D180643920067422B /* LocColCourseList.m */,
 				65B18C8018166A8600FC6411 /* LocColQuestion.h */,
 				65B18C8118166A8600FC6411 /* LocColQuestion.m */,
+				118E9B04184ECC59008467D9 /* LocColComment.h */,
+				118E9B05184ECC59008467D9 /* LocColComment.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -295,8 +300,6 @@
 				6574B900180631A1007F9E19 /* Models */,
 				FA72F7C418062212004A768A /* Helpers */,
 				FA72F7C3180621B8004A768A /* Views */,
-				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
-				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -304,6 +307,8 @@
 		FA72F7C3180621B8004A768A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
+				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				11E34145184AE4B7003A1940 /* LocColCommentRoomViewController.m in Sources */,
 				650876DF17F6420400E3C4F4 /* main.m in Sources */,
 				6574B90618063243007F9E19 /* LocColPresentation.m in Sources */,
+				118E9B06184ECC59008467D9 /* LocColComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
