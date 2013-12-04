@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hzJ-lm-tOF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rA2-Up-CkA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="51" y="351" width="211" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1647058874" green="0.5176470876" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="tintColor" patternImage="372DD727-9A41-4DC6-963C-613D2DDD7703" colorSpace="pattern"/>
+                                <color key="tintColor" patternImage="AC60BCF4-D292-4C17-B25F-8C9DDA090EDF" colorSpace="pattern"/>
                                 <size key="titleShadowOffset" width="7" height="7"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
@@ -517,32 +517,56 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="9xW-Bo-e7m" customClass="LocColChatCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="96" id="9xW-Bo-e7m" customClass="LocColChatCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9xW-Bo-e7m" id="b8o-BF-lCy">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVT-K1-cVY">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVT-K1-cVY">
                                                     <rect key="frame" x="13" y="16" width="68" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="chat text" translatesAutoresizingMaskIntoConstraints="NO" id="bPH-3H-rI1">
-                                                    <rect key="frame" x="58" y="10" width="248" height="22"/>
+                                                    <rect key="frame" x="69" y="5" width="243" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-H3-O6B">
+                                                    <rect key="frame" x="20" y="58" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Like">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="likeButtonPressed:" destination="rA2-Up-CkA" eventType="touchUpInside" id="ts1-N1-IMf"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-3u-ph1">
+                                                    <rect key="frame" x="273" y="58" width="39" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Reply">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="replyButtonPressed:" destination="rA2-Up-CkA" eventType="touchUpInside" id="ZM8-Ne-6US"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="chatContent" destination="bPH-3H-rI1" id="aaz-Sc-Nbc"/>
                                             <outlet property="chatUser" destination="NVT-K1-cVY" id="5vI-FE-oa8"/>
+                                            <outlet property="likeButton" destination="PIE-H3-O6B" id="gmk-rr-ox0"/>
+                                            <outlet property="replyButton" destination="0cN-3u-ph1" id="Mxf-Zy-rPO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -562,7 +586,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="372DD727-9A41-4DC6-963C-613D2DDD7703" width="256" height="256">
+        <image name="AC60BCF4-D292-4C17-B25F-8C9DDA090EDF" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4938,9 +4962,9 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNHk1NACoABAAIdXiB
 /2dqdP9sb3n/am13/2ptd/9wc33/d3qD/2ptd/9qbXf/e32D/2xudf9sb3n/bnF7/2xvef9qbHP/dXd9
 /3V3ff9qbXf/c3V8/25wd/9wc33/bnB3/3Z4fP9ucXv/cHJ5/3Byef93eoP/bnF7/3Bzff9sb3n/cHN9
 /wAOAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABAC2AQMAAwAAAAEAAQAAAQYAAwAAAAEA
-AgAAAREABAAAAAIABAC+ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
-BADGARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAQABADOh3MABwAADEgABADWAAAAAAAIAAgA
-CAAIAAAACAACAAgAAgAAAAIAAAABAAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYA
+AgAAAREABAAAAAIABADGARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
+BAC+ARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAQABADOh3MABwAADEgABADWAAAAAAAIAAgA
+CAAIAAIAAAACAAAAAAAIAAIACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYA
 MQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1IUCAgAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAAAVAAAAAzZGVzYwAAAYQA
 AABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAAAiwAAAAUYlhZWgAAAkAA
@@ -5005,8 +5029,6 @@ AAAAAAAEAQAAAAAAAABCAAAAAAAAAAAAAAAAAAQO4w
 </mutableData>
         </image>
         <image name="C-Logo.png" width="498" height="402"/>
-        <image name="presentation 2.png" width="30" height="30"/>
-        <image name="presentation 2.png" width="30" height="30"/>
         <image name="presentation 2.png" width="30" height="30"/>
         <image name="spanner 2.png" width="30" height="30"/>
     </resources>

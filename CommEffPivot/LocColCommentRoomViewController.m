@@ -25,6 +25,11 @@
 @end
 
 @implementation LocColCommentRoomViewController
+- (IBAction)replyButtonPressed:(id)sender {
+}
+
+- (IBAction)likeButtonPressed:(id)sender {
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -71,7 +76,7 @@
     CGSize constraintSize = CGSizeMake(300.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     
-    return labelSize.height +40;
+    return labelSize.height +100;
 }
 
 - (void)reloadTableViewDataSource{

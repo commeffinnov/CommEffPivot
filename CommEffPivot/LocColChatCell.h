@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *chatUser;
 @property (strong, nonatomic) IBOutlet UITextView *chatContent;
+@property (strong, nonatomic) IBOutlet UIButton *replyButton;
+@property (strong, nonatomic) IBOutlet UIButton *likeButton;
 
 @end

@@ -273,8 +273,6 @@
 				658116651810F6AC0042978B /* LocColPresentationListViewController.m */,
 				11E34143184AE4B7003A1940 /* LocColCommentRoomViewController.h */,
 				11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */,
-				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
-				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +295,8 @@
 				6574B900180631A1007F9E19 /* Models */,
 				FA72F7C418062212004A768A /* Helpers */,
 				FA72F7C3180621B8004A768A /* Views */,
+				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
+				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
