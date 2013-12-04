@@ -45,9 +45,16 @@
         cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         UIFont *font = [UIFont systemFontOfSize:14];
         CGSize size = [chatText sizeWithFont:font constrainedToSize:CGSizeMake(225.0f, 1000.0f) lineBreakMode:UILineBreakModeCharacterWrap];
-        cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
+        //cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
         cell.chatContent.font = [UIFont fontWithName:@"Helvetica" size:14.0];
         cell.chatContent.text = chatText;
+        
+        
+        CGRect frame = cell.chatContent.frame;
+        frame.size.height = cell.chatContent.contentSize.height;
+        cell.chatContent.frame = frame;
+        
+        
         NSLog(@"cell returned");
         [cell.chatContent sizeToFit];
         
@@ -61,10 +68,10 @@
 {
     NSString *cellText = [[_messages objectAtIndex:_messages.count-indexPath.row-1] objectForKey:@"text"];
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:14.0];
-    CGSize constraintSize = CGSizeMake(225.0f, MAXFLOAT);
+    CGSize constraintSize = CGSizeMake(300.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     
-    return labelSize.height + 40;
+    return labelSize.height +40;
 }
 
 - (void)reloadTableViewDataSource{
@@ -256,17 +263,9 @@
     [self.textfield setDelegate:self];
     if (_messages == nil){
         _messages= [[NSMutableArray alloc] init];
-        // NSDictionary* dict = [NSDictionary dictionaryWithObjects:@[@"This is a text message"]
-        //                                            forKeys:@[@"text"]];
-        // [_messages addObject:dict];
         
     }
-    
-    NSArray *keys = [NSArray arrayWithObjects:@"text", nil];
-    NSArray *objects = [NSArray arrayWithObjects:_textfield.text, nil];
-    NSLog(@"text field's content is: %d", _textfield.text);
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [_messages addObject:dictionary];
+
     
     [self.tableview reloadData];
     _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
