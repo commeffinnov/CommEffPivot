@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FlatUIKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SocketRocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>52D41EDC3D874759AD8EF332</key>
+		<key>0D3255DDD83F44738CDA6D9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85B1FF89C6EF4EC587C9CF08</key>
+		<key>4379EA9EEE4E405180E2EBDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB69CEF8CC60445F80FC1193</key>
+		<key>7E1A9E96CF9C4D96880BCB58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD79080EBE384EC396461DB0</key>
+		<key>DCCB7EF4C7B44788A31B00DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB59CDB675F6437AB3A67B22</key>
 		<dict>
 			<key>primary</key>
 			<true/>
