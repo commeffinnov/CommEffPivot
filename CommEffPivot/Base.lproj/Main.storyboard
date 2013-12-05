@@ -47,7 +47,7 @@
                                 <rect key="frame" x="51" y="351" width="211" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1647058874" green="0.5176470876" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="tintColor" patternImage="132C9FF5-9FBF-4510-81C6-C858C51251CD" colorSpace="pattern"/>
+                                <color key="tintColor" patternImage="367A59BA-2559-4379-AD2F-4428C69B2793" colorSpace="pattern"/>
                                 <size key="titleShadowOffset" width="7" height="7"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
@@ -587,7 +587,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="132C9FF5-9FBF-4510-81C6-C858C51251CD" width="256" height="256">
+        <image name="367A59BA-2559-4379-AD2F-4428C69B2793" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
