@@ -9,6 +9,11 @@
 #import "LocColCommentRoomViewController.h"
 #import "LocColChatCell.h"
 #import "LocColComment.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
 
 @interface LocColCommentRoomViewController ()
 {
@@ -50,6 +55,19 @@
     [_tableview endUpdates];
     [_tableview reloadData];
     
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
+    
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
+                                  highlightedColor:[UIColor belizeHoleColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[UINavigationBar class], nil];
     
 }
 
