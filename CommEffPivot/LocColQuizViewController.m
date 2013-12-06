@@ -75,10 +75,26 @@ bool _endOfQuiz = false;
 }
 
 //(NSDictionary*)result_data
+- (void) showStatsText
+{
+    [self.resultA setHidden:false];
+    [self.resultB setHidden:false];
+    [self.resultC setHidden:false];
+    [self.resultD setHidden:false];
+}
+
+- (void) hideStatsText
+{
+    [self.resultA setHidden:true];
+    [self.resultB setHidden:true];
+    [self.resultC setHidden:true];
+    [self.resultD setHidden:true];
+}
 
 -(void) displayQuestionStats: (NSMutableArray*) result
                   questionID: (NSString *) questionID
 {
+    [self showStatsText];
     // Get current question
     LocColQuestion *question = [self.questions objectAtIndex:currentQuestionID];
     // If the Statistics are not for the current question
@@ -235,6 +251,7 @@ bool _endOfQuiz = false;
     }
     /////////////////////////
     
+    [self hideStatsText];
     // Only operate when the index and questions array is legit
     if (self.questions == nil || questionIndex < 0 || questionIndex >= [self.questions count]){
         return;
@@ -407,6 +424,7 @@ bool _endOfQuiz = false;
 
 - (void) resetToDefault
 {
+    [self hideStatsText];
     [self hideTimer];
     [self hideOptions];
     self.questionDisplay.text  = @"Quiz Finished. Please wait for the instructor.";
@@ -518,8 +536,13 @@ bool _endOfQuiz = false;
         NSString *questionID = [dict valueForKey:@"questionID"];
         for (int i = 0; i < [count count]; i++){
             NSLog(@"%@", count);
-            NSNumber *num =[count objectAtIndex:i];
-            [result addObject:num];
+            NSString *num =[count objectAtIndex:i];
+            NSLog(@"NUM:%@", num);
+            if ([num isKindOfClass:[NSNull class]]){
+                num = @"0";
+            }
+            NSNumber *n = [NSNumber numberWithInteger:[num integerValue]];
+            [result addObject:n];
         }
         [self displayQuestionStats:result questionID:questionID];
     }];
