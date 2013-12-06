@@ -1,5 +1,5 @@
 //
-//  LocColTableViewController.m
+//  LocColCourseTableViewController.m
 //  CommEffPivot
 //
 //  Created by Yitong Zhou on 10/10/13.
@@ -10,7 +10,7 @@
 #import "LocColPresentation.h"
 #import "LocColCourseList.h"
 #import "LocColCourse.h"
-#import "LocColTableViewController.h"
+#import "LocColCourseTableViewController.h"
 #import "LocColPresentationViewController.h"
 #import "LocColPresentationListViewController.h"
 #import "Constants.h"
@@ -21,13 +21,13 @@
 #import "UIBarButtonItem+FlatUI.h"
 
 
-@interface LocColTableViewController ()
+@interface LocColCourseTableViewController ()
 
 
 
 @end
 
-@implementation LocColTableViewController
+@implementation LocColCourseTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
