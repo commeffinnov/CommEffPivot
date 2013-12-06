@@ -535,6 +535,7 @@ bool _endOfQuiz = false;
             [self resetToDefault];
             NSLog(@"Goto Default Page");
         }
+        self.presentation.status = [NSNumber numberWithInteger:[index integerValue]];
     }];
     
     // Show Question Statistics Event
