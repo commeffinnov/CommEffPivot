@@ -18,6 +18,7 @@
 		11ED13AB18515B7D008BB616 /* Chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13AA18515B7D008BB616 /* Chat.png */; };
 		11ED13AE1851608F008BB616 /* LocColIndexPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ED13AD1851608F008BB616 /* LocColIndexPathButton.m */; };
 		11ED13B01851680C008BB616 /* icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13AF1851680C008BB616 /* icon-comments.png */; };
+		11ED13BA18518624008BB616 /* LocColBrowseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ED13B918518624008BB616 /* LocColBrowseNavViewController.m */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
@@ -77,6 +78,8 @@
 		11ED13AC1851608F008BB616 /* LocColIndexPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColIndexPathButton.h; sourceTree = "<group>"; };
 		11ED13AD1851608F008BB616 /* LocColIndexPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColIndexPathButton.m; sourceTree = "<group>"; };
 		11ED13AF1851680C008BB616 /* icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-comments.png"; path = "images/icon-comments.png"; sourceTree = "<group>"; };
+		11ED13B818518624008BB616 /* LocColBrowseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColBrowseNavViewController.h; sourceTree = "<group>"; };
+		11ED13B918518624008BB616 /* LocColBrowseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColBrowseNavViewController.m; sourceTree = "<group>"; };
 		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -284,6 +287,8 @@
 				658116651810F6AC0042978B /* LocColPresentationListViewController.m */,
 				11E34143184AE4B7003A1940 /* LocColCommentRoomViewController.h */,
 				11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */,
+				11ED13B818518624008BB616 /* LocColBrowseNavViewController.h */,
+				11ED13B918518624008BB616 /* LocColBrowseNavViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */,
 				65F55353180CEE1E003D4425 /* LocColPresentationViewController.m in Sources */,
 				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
+				11ED13BA18518624008BB616 /* LocColBrowseNavViewController.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
 				11ED13AE1851608F008BB616 /* LocColIndexPathButton.m in Sources */,
 				114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */,

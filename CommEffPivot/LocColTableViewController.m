@@ -45,6 +45,14 @@
     return self;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+    [super viewDidAppear:YES];
+   
+   // [UIBarBu]
+}
 - (void)viewDidLoad
 {
     // Uncomment the following line to preserve selection between presentations.
@@ -64,19 +72,15 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    
-    self.view.backgroundColor = [UIColor cloudsColor];
-    
-    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor emerlandColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
     
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
-                                  highlightedColor:[UIColor belizeHoleColor]
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor whiteColor]
+                                  highlightedColor:[UIColor whiteColor]
                                       cornerRadius:3
-                                   whenContainedIn:[UINavigationBar class], nil];
+                                   whenContainedIn:[LocColTableViewController class], nil];
+    self.view.backgroundColor = [UIColor cloudsColor];
+   
     
     
 }
@@ -153,7 +157,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView
-accessoryButtonTappedForRowWithIndexPath:(NSIndexPath*)indexPath {
+didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+
+{
     // Bind the Details with the information Button
     
     NSLog(@"gdddd!!!");

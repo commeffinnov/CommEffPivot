@@ -386,6 +386,7 @@ bool _endOfQuiz = false;
     
     [self initQuiz];
     [self subscribeChannels];
+    
 }
 
 - (void)initQuiz

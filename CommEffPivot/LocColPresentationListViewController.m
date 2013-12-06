@@ -12,6 +12,10 @@
 #import "LocColPresentationViewController.h"
 #import "LocColPresentationListViewController.h"
 #import "LocColPresentation.h"
+#import "UIFont+FlatUI.h"
+#import "UIColor+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @interface LocColPresentationListViewController ()
 
@@ -31,11 +35,24 @@
 - (void)viewDidLoad
 {
     self.tableView.dataSource = self;
+    
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor emerlandColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor whiteColor]
+                                  highlightedColor:[UIColor whiteColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[LocColPresentationListViewController class], nil];
+    self.view.backgroundColor = [UIColor cloudsColor];
+     
+    
     if (self.course.presentations == nil){
         [self.course setPresentations:[[NSMutableArray alloc]init]];
         [self fetchPresentationList];
+        
+         [super viewDidLoad];
     }
-    [super viewDidLoad];
+   
 
 }
 

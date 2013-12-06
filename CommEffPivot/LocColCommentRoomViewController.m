@@ -117,7 +117,6 @@
         LocColComment* new_comment =  [_messages objectAtIndex:row];
         NSString *chatText = new_comment.text;
         NSString *userName = new_comment.user_name;
-        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         UIFont *font = [UIFont systemFontOfSize:14];
         CGSize size = [chatText sizeWithFont:font constrainedToSize:CGSizeMake(225.0f, 1000.0f) lineBreakMode:UILineBreakModeCharacterWrap];
         //cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
@@ -239,7 +238,7 @@
         NSString* comment_id = @"123";
         NSString* room_id = self.room_id;
         NSDate* ctime = nil;
-        LocColComment* new_comment = [[LocColComment alloc]initWithAttributes:comment_id user_id:user_id user_name:@"cassandra" text:text reply_to_id:reply_to_id reply_to_name:reply_to_name room_id:room_id ctime:ctime];
+        LocColComment* new_comment = [[LocColComment alloc]initWithAttributes:comment_id user_id:user_id user_name:@"Cassandra" text:text reply_to_id:reply_to_id reply_to_name:reply_to_name room_id:room_id ctime:ctime];
         [self appendNewMessage:new_comment];
         NSLog(@"my name is");
         NSLog(new_comment.user_name);
@@ -365,21 +364,21 @@
         _messages= [[NSMutableArray alloc] init];
         
     }
-    
+  
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    [self.navbar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    [self.navbar configureFlatNavigationBarWithColor:[UIColor emerlandColor]];
+    [self.navbar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
     
     [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
                                   highlightedColor:[UIColor belizeHoleColor]
                                       cornerRadius:3
                                    whenContainedIn:[UINavigationBar class], nil];
-    
+
     [self.tableview reloadData];
     _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.navbar.topItem.title = @"Machine learning";

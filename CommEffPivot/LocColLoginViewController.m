@@ -33,18 +33,19 @@
 {
     [super viewDidLoad];
     
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    
-    self.view.backgroundColor = [UIColor cloudsColor];
-    
-    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
+self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+self.view.backgroundColor = [UIColor cloudsColor];
+
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor emerlandColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
     
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
+  
+      [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
                                   highlightedColor:[UIColor belizeHoleColor]
-                                      cornerRadius:3
+                                     cornerRadius:3
                                    whenContainedIn:[UINavigationBar class], nil];
     
     [self.signInButton setButtonColor:[UIColor turquoiseColor]];

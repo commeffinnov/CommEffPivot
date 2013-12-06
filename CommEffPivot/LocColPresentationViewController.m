@@ -14,6 +14,10 @@
 #import "LocColPresentationViewController.h"
 #import "LocColPresentation.h"
 #import "LocColPresentationSlide.h"
+#import "UIFont+FlatUI.h"
+#import "UIColor+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 
 @implementation LocColPresentationViewController
@@ -83,6 +87,13 @@
     
     [self goToSlide: currentPage];
     controlMode = YES;
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor emerlandColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor whiteColor]
+                                  highlightedColor:[UIColor whiteColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[LocColPresentationViewController class], nil];
 }
 
 - (void)viewDidUnload
