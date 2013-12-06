@@ -7,6 +7,10 @@
 //
 
 #import "LocColViewController.h"
+#import "UIFont+FlatUI.h"
+#import "UIColor+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @interface LocColViewController ()
 
@@ -19,6 +23,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor turquoiseColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor whiteColor]
+                                  highlightedColor:[UIColor whiteColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[UINavigationBar class], nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
