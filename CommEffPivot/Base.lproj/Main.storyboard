@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="-545" y="-421"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--View Controller - Settings-->
         <scene sceneID="6Nb-Tj-rmH">
             <objects>
                 <viewController id="B2L-UQ-KYE" sceneMemberID="viewController">
@@ -190,7 +190,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="spanner 2.png" id="tHP-6f-G1R"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="spanner 2.png" id="tHP-6f-G1R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ot-gK-o1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -590,6 +590,7 @@
     </scenes>
     <resources>
         <image name="Chat.png" width="28" height="28"/>
+        <image name="presentation 2.png" width="30" height="30"/>
         <image name="presentation 2.png" width="30" height="30"/>
         <image name="spanner 2.png" width="30" height="30"/>
     </resources>
