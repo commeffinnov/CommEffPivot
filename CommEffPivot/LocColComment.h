@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+//room_id == presentation_id
+
 @interface LocColComment : NSObject
 
 @property  (strong, nonatomic) NSString *user_id;

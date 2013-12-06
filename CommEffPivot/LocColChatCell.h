@@ -10,9 +10,11 @@
 
 @interface LocColChatCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *chatUser;
+
 @property (strong, nonatomic) IBOutlet UITextView *chatContent;
-@property (strong, nonatomic) IBOutlet UIButton *replyButton;
-@property (strong, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UILabel *numLikes;
+@property (weak, nonatomic) NSString *userName;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "LocColLoginViewController.h"
-#import "LocColUtils.h"
 #import "LocColCourse.h"
 #import "LocColAPIRequest.h"
 #import "LocColCourseList.h"
@@ -26,6 +25,8 @@
 
 @end
 @implementation LocColLoginViewController
+
+
 
 
 - (void) viewDidLoad

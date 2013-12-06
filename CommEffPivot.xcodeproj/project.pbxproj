@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114EF149181592DB0083E092 /* LocColQuizViewController.m */; };
-		115B7C7018499E7400E4C51F /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 115B7C6F18499E7400E4C51F /* chat.jpg */; };
 		118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E9B02184D68B6008467D9 /* LocColChatCell.m */; };
 		118E9B06184ECC59008467D9 /* LocColComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E9B05184ECC59008467D9 /* LocColComment.m */; };
 		11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E0BEF61810AB7A004E4650 /* C-Logo.png */; };
 		11E34145184AE4B7003A1940 /* LocColCommentRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */; };
 		11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E43865182816D8007914F9 /* LocColPresentationSlide.m */; };
+		11ED13A818515B24008BB616 /* icon-hearts-button-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13A618515B24008BB616 /* icon-hearts-button-0.png */; };
+		11ED13A918515B24008BB616 /* icon-hearts-button-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13A718515B24008BB616 /* icon-hearts-button-1.png */; };
+		11ED13AB18515B7D008BB616 /* Chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13AA18515B7D008BB616 /* Chat.png */; };
+		11ED13AE1851608F008BB616 /* LocColIndexPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ED13AD1851608F008BB616 /* LocColIndexPathButton.m */; };
+		11ED13B01851680C008BB616 /* icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ED13AF1851680C008BB616 /* icon-comments.png */; };
 		1EE17F56DD104BB889D0AFCE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DE8BA9F6E4E76AF954139 /* libPods.a */; };
 		650876D317F6420400E3C4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D217F6420400E3C4F4 /* Foundation.framework */; };
 		650876D517F6420400E3C4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D417F6420400E3C4F4 /* CoreGraphics.framework */; };
@@ -29,7 +33,6 @@
 		650876F417F6420400E3C4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650876D617F6420400E3C4F4 /* UIKit.framework */; };
 		650876FC17F6420400E3C4F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 650876FA17F6420400E3C4F4 /* InfoPlist.strings */; };
 		650876FE17F6420400E3C4F4 /* CommEffPivotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */; };
-		6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FA180606D9007F9E19 /* LocColUtils.m */; };
 		6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */; };
 		6574B903180631BE007F9E19 /* LocColCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B902180631BE007F9E19 /* LocColCourse.m */; };
 		6574B90618063243007F9E19 /* LocColPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574B90518063243007F9E19 /* LocColPresentation.m */; };
@@ -59,7 +62,6 @@
 /* Begin PBXFileReference section */
 		114EF148181592DB0083E092 /* LocColQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColQuizViewController.h; sourceTree = "<group>"; };
 		114EF149181592DB0083E092 /* LocColQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColQuizViewController.m; sourceTree = "<group>"; };
-		115B7C6F18499E7400E4C51F /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chat.jpg; path = images/chat.jpg; sourceTree = "<group>"; };
 		118E9B01184D68B6008467D9 /* LocColChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColChatCell.h; sourceTree = "<group>"; };
 		118E9B02184D68B6008467D9 /* LocColChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColChatCell.m; sourceTree = "<group>"; };
 		118E9B04184ECC59008467D9 /* LocColComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColComment.h; sourceTree = "<group>"; };
@@ -69,6 +71,12 @@
 		11E34144184AE4B7003A1940 /* LocColCommentRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColCommentRoomViewController.m; sourceTree = "<group>"; };
 		11E43864182816D8007914F9 /* LocColPresentationSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColPresentationSlide.h; sourceTree = "<group>"; };
 		11E43865182816D8007914F9 /* LocColPresentationSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColPresentationSlide.m; sourceTree = "<group>"; };
+		11ED13A618515B24008BB616 /* icon-hearts-button-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-hearts-button-0.png"; path = "images/icon-hearts-button-0.png"; sourceTree = "<group>"; };
+		11ED13A718515B24008BB616 /* icon-hearts-button-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-hearts-button-1.png"; path = "images/icon-hearts-button-1.png"; sourceTree = "<group>"; };
+		11ED13AA18515B7D008BB616 /* Chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chat.png; path = images/Chat.png; sourceTree = "<group>"; };
+		11ED13AC1851608F008BB616 /* LocColIndexPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColIndexPathButton.h; sourceTree = "<group>"; };
+		11ED13AD1851608F008BB616 /* LocColIndexPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColIndexPathButton.m; sourceTree = "<group>"; };
+		11ED13AF1851680C008BB616 /* icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-comments.png"; path = "images/icon-comments.png"; sourceTree = "<group>"; };
 		350DE8BA9F6E4E76AF954139 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876CF17F6420400E3C4F4 /* CommEffPivot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommEffPivot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650876D217F6420400E3C4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,8 +97,6 @@
 		650876F917F6420400E3C4F4 /* CommEffPivotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CommEffPivotTests-Info.plist"; sourceTree = "<group>"; };
 		650876FB17F6420400E3C4F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		650876FD17F6420400E3C4F4 /* CommEffPivotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommEffPivotTests.m; sourceTree = "<group>"; };
-		6574B8F9180606D9007F9E19 /* LocColUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColUtils.h; sourceTree = "<group>"; };
-		6574B8FA180606D9007F9E19 /* LocColUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColUtils.m; sourceTree = "<group>"; };
 		6574B8FC18060C2C007F9E19 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6574B8FD18061AC3007F9E19 /* LocColLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocColLoginViewController.h; sourceTree = "<group>"; };
 		6574B8FE18061AC3007F9E19 /* LocColLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocColLoginViewController.m; sourceTree = "<group>"; };
@@ -285,7 +291,10 @@
 		65E94214180708770018BF2A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				115B7C6F18499E7400E4C51F /* chat.jpg */,
+				11ED13AF1851680C008BB616 /* icon-comments.png */,
+				11ED13AA18515B7D008BB616 /* Chat.png */,
+				11ED13A618515B24008BB616 /* icon-hearts-button-0.png */,
+				11ED13A718515B24008BB616 /* icon-hearts-button-1.png */,
 				65E9421718070D400018BF2A /* presentation 2.png */,
 				65E9421518070D240018BF2A /* spanner 2.png */,
 			);
@@ -309,6 +318,8 @@
 			children = (
 				118E9B02184D68B6008467D9 /* LocColChatCell.m */,
 				118E9B01184D68B6008467D9 /* LocColChatCell.h */,
+				11ED13AC1851608F008BB616 /* LocColIndexPathButton.h */,
+				11ED13AD1851608F008BB616 /* LocColIndexPathButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -316,10 +327,8 @@
 		FA72F7C418062212004A768A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6574B8F9180606D9007F9E19 /* LocColUtils.h */,
 				FA72F7C51806226C004A768A /* LocColRequestQueue.h */,
 				FA72F7C61806226C004A768A /* LocColRequestQueue.m */,
-				6574B8FA180606D9007F9E19 /* LocColUtils.m */,
 				6574B9071806331B007F9E19 /* LocColAPIRequest.h */,
 				6574B9081806331B007F9E19 /* LocColAPIRequest.m */,
 			);
@@ -405,13 +414,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11ED13B01851680C008BB616 /* icon-comments.png in Resources */,
+				11ED13AB18515B7D008BB616 /* Chat.png in Resources */,
 				650876EB17F6420400E3C4F4 /* Images.xcassets in Resources */,
 				65E9421618070D240018BF2A /* spanner 2.png in Resources */,
 				650876DD17F6420400E3C4F4 /* InfoPlist.strings in Resources */,
 				65E9421818070D400018BF2A /* presentation 2.png in Resources */,
+				11ED13A818515B24008BB616 /* icon-hearts-button-0.png in Resources */,
 				11E0BEF71810AB7A004E4650 /* C-Logo.png in Resources */,
 				650876E617F6420400E3C4F4 /* Main.storyboard in Resources */,
-				115B7C7018499E7400E4C51F /* chat.jpg in Resources */,
+				11ED13A918515B24008BB616 /* icon-hearts-button-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,10 +481,10 @@
 				6574B8FF18061AC3007F9E19 /* LocColLoginViewController.m in Sources */,
 				6574B903180631BE007F9E19 /* LocColCourse.m in Sources */,
 				118E9B03184D68B6008467D9 /* LocColChatCell.m in Sources */,
-				6574B8FB180606D9007F9E19 /* LocColUtils.m in Sources */,
 				65F55353180CEE1E003D4425 /* LocColPresentationViewController.m in Sources */,
 				FA72F7C71806226C004A768A /* LocColRequestQueue.m in Sources */,
 				650876E317F6420400E3C4F4 /* LocColAppDelegate.m in Sources */,
+				11ED13AE1851608F008BB616 /* LocColIndexPathButton.m in Sources */,
 				114EF14A181592DB0083E092 /* LocColQuizViewController.m in Sources */,
 				6582DCA3180CB42A004C9C6A /* LocColFetchCourseListOperation.m in Sources */,
 				11E43866182816D8007914F9 /* LocColPresentationSlide.m in Sources */,

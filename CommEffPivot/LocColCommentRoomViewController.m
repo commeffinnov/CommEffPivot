@@ -14,10 +14,12 @@
 #import "UIFont+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
 #import "UINavigationBar+FlatUI.h"
+#import "LocColIndexPathButton.h"
 
 @interface LocColCommentRoomViewController ()
 {
     BOOL reloading;
+
 }
 
 
@@ -27,18 +29,44 @@
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *room_id;
-@property (strong, nonatomic) IBOutlet UILabel *course_name;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
+
+
 
 
 @end
 
 @implementation LocColCommentRoomViewController
-- (IBAction)replyButtonPressed:(id)sender {
+
+
+-(IBAction)likeButtonPressed:(LocColIndexPathButton*)sender{
+    NSLog(@"Like button pressed...");
+    NSLog(@"Currently the the cell index is %d", sender.cellIndex.row);
+    NSLog(@"Current state is %d",sender.state);
+    LocColChatCell *cell = [self.tableview cellForRowAtIndexPath:sender.cellIndex];
+    if (sender.state == 0 ){
+        sender.state=1;
+        cell.numLikes.text = [NSString stringWithFormat:@"%d", 0];
+        UIImage *likeButtonImage1=[UIImage imageNamed:@"icon-hearts-button-1.png"];
+        [sender setImage:likeButtonImage1 forState:UIControlStateNormal];
+        
+    }else{
+        cell.numLikes.text = [NSString stringWithFormat:@"%d", 1];
+        UIImage *likeButtonImage0=[UIImage imageNamed:@"icon-hearts-button-0.png"];
+        [sender setImage:likeButtonImage0 forState:UIControlStateNormal];
+        sender.state=0;
+    }
+    
+    
 }
 
-- (IBAction)likeButtonPressed:(id)sender {
+-(IBAction)replyButtonPressed:(LocColIndexPathButton*)sender{
+    NSLog(@"Reply button pressed");
+    LocColChatCell* cell =[self.tableview cellForRowAtIndexPath:sender.cellIndex];
+    NSLog(cell.userName);
+    self.textfield.text=[[@"@" stringByAppendingString:cell.userName] stringByAppendingString:@" :"];
+    
 }
-
 
 //Call this method to append new comment on the exisiting chat table, this method will add a new LocColComment object to message list
 -(void)appendNewMessage:(LocColComment*) new_comment
@@ -95,10 +123,8 @@
         //cell.chatContent.frame = CGRectMake(75, 14, size.width +20, size.height + 20);
         cell.chatContent.font = [UIFont fontWithName:@"Helvetica" size:14.0];
         cell.chatContent.text = [[userName stringByAppendingString:@": "] stringByAppendingString:chatText];
-        cell.chatUser.font = [UIFont fontWithName:@"Helvetica" size:14.0];
-        cell.chatUser.text = userName;
-        cell.chatUser.numberOfLines=0;
-        [cell.chatUser sizeToFit];
+        cell.userName=userName;
+       
         
         NSLog(@"the user name is %d", userName);
         
@@ -111,10 +137,38 @@
         [cell.chatContent sizeToFit];
         
         
+        LocColIndexPathButton *likeButton = [LocColIndexPathButton buttonWithType:UIButtonTypeCustom];
+        likeButton.cellIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+        [likeButton addTarget:self action:@selector(likeButtonPressed:)
+          forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:likeButton];
+        UIImage *likeButtonImage1= [UIImage imageNamed:@"icon-hearts-button-0.png"];
+        [likeButton setImage: likeButtonImage1 forState:UIControlStateNormal];
+    
+        [likeButton setFrame:CGRectMake(215,56,42,21)];
+        likeButton.state=0;
+        
+        
+         LocColIndexPathButton *replyButton = [LocColIndexPathButton buttonWithType:UIButtonTypeCustom];
+         replyButton.cellIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+        [replyButton addTarget:self action:@selector(replyButtonPressed:)
+             forControlEvents:UIControlEventTouchUpInside];
+         [cell.contentView addSubview:replyButton];
+        UIImage *replyButtonImage= [UIImage imageNamed:@"icon-comments.png"];
+       
+        [replyButton setFrame:CGRectMake(265,56,42,21)];
+         [replyButton setImage:replyButtonImage forState:UIControlStateNormal];
+        
+        
+        
+        
+        
         //cell.chatUser.text = [[_messages objectAtIndex:row] objectForKey:@"userName"];
     }
     return cell;
 }
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -303,7 +357,7 @@
 //    self.tableview.dataSource = table_controller;
 //    self.textfield.delegate = self;
     [super viewDidLoad];
-    _tableview.separatorColor = [UIColor clearColor];
+    //_tableview.separatorColor = [UIColor clearColor];
     [self.tableview setDelegate:self];
     self.tableview.dataSource=self;
     [self.textfield setDelegate:self];
@@ -312,10 +366,30 @@
         
     }
     
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
+    
+    [self.navbar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
+                                  highlightedColor:[UIColor belizeHoleColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[UINavigationBar class], nil];
+    
     [self.tableview reloadData];
     _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.course_name.text = @"Machine learning";
-    [self.course_name sizeToFit];
+    self.navbar.topItem.title = @"Machine learning";
+    
+    //UIImage *btnImage = [UIImage imageNamed:@"image.png"];
+    //[btnTwo setImage:btnImage forState:UIControlStateNormal];
+   
+    
+    
+   
     
   
     

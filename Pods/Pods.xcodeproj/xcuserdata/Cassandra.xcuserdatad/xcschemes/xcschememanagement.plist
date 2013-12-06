@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>Pods-FlatUIKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Pods-SocketRocket.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,12 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0D3255DDD83F44738CDA6D9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>368DD10D001D416D91998589</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4379EA9EEE4E405180E2EBDD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>52D41EDC3D874759AD8EF332</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E1A9E96CF9C4D96880BCB58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DCCB7EF4C7B44788A31B00DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DD79080EBE384EC396461DB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB59CDB675F6437AB3A67B22</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LocColUIKit.h">
+   </FileRef>
+   <FileRef
+      location = "group:LocColUIKit.m">
+   </FileRef>
+   <FileRef
       location = "group:CommEffPivot.xcodeproj">
    </FileRef>
    <FileRef
