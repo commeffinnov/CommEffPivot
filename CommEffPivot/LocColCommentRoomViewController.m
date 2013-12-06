@@ -46,12 +46,12 @@
     LocColChatCell *cell = [self.tableview cellForRowAtIndexPath:sender.cellIndex];
     if (sender.state == 0 ){
         sender.state=1;
-        cell.numLikes.text = [NSString stringWithFormat:@"%d", 0];
+        cell.numLikes.text = [NSString stringWithFormat:@"%d", 1];
         UIImage *likeButtonImage1=[UIImage imageNamed:@"icon-hearts-button-1.png"];
         [sender setImage:likeButtonImage1 forState:UIControlStateNormal];
         
     }else{
-        cell.numLikes.text = [NSString stringWithFormat:@"%d", 1];
+        cell.numLikes.text = [NSString stringWithFormat:@"%d", 0];
         UIImage *likeButtonImage0=[UIImage imageNamed:@"icon-hearts-button-0.png"];
         [sender setImage:likeButtonImage0 forState:UIControlStateNormal];
         sender.state=0;
