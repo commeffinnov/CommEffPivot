@@ -371,14 +371,18 @@
     }
     
     self.view.backgroundColor = [UIColor cloudsColor];
+
+    // XXX ONLY NEED TO DO THIS ONCE!! The navbar is SHARED in the app, so when you do this
+    // you will be changing on every page.  If you change it for this page, you should
+    // do it in the viewDidLoad and then in viewDidUnload, you should change it back!
     
-    [self.navbar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
-    
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
-                                  highlightedColor:[UIColor belizeHoleColor]
-                                      cornerRadius:3
-                                   whenContainedIn:[UINavigationBar class], nil];
+//    [self.navbar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+//    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+//    
+//    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
+//                                  highlightedColor:[UIColor belizeHoleColor]
+//                                      cornerRadius:3
+//                                   whenContainedIn:[UINavigationBar class], nil];
     
     [self.tableview reloadData];
     _textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
