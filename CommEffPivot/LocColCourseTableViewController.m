@@ -70,13 +70,13 @@
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
-    
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
-                                  highlightedColor:[UIColor belizeHoleColor]
-                                      cornerRadius:3
-                                   whenContainedIn:[UINavigationBar class], nil];
+//    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+//    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FontNAme" size:16], NSFontAttributeName, nil]];
+//    
+//    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
+//                                  highlightedColor:[UIColor belizeHoleColor]
+//                                      cornerRadius:3
+//                                   whenContainedIn:[UINavigationBar class], nil];
     
     
 }

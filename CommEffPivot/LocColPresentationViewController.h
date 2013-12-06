@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "LocColPresentation.h"
+#import "LocColViewController.h"
 
+@interface LocColPresentationViewController : LocColViewController
 
-@interface LocColPresentationViewController : UIViewController
 @property (nonatomic, strong) LocColPresentation *presentation;
 @property (nonatomic, strong) NSMutableArray *slides;
 

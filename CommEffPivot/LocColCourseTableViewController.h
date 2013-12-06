@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocColTableViewController.h"
 
-@interface LocColCourseTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface LocColCourseTableViewController : LocColTableViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic)NSMutableArray *courseData;
 
 @end
