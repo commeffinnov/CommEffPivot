@@ -45,6 +45,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *resultB;
 @property (strong, nonatomic) IBOutlet UILabel *resultC;
 @property (strong, nonatomic) IBOutlet UILabel *resultD;
+@property (weak, nonatomic) IBOutlet UILabel *totalResult;
+
 
 @end
 
@@ -75,6 +77,22 @@ bool _endOfQuiz = false;
 }
 
 //(NSDictionary*)result_data
+- (void) showStatsText
+{
+    [self.resultA setHidden:false];
+    [self.resultB setHidden:false];
+    [self.resultC setHidden:false];
+    [self.resultD setHidden:false];
+}
+
+- (void) hideStatsText
+{
+    [self.resultA setHidden:true];
+    [self.resultB setHidden:true];
+    [self.resultC setHidden:true];
+    [self.resultD setHidden:true];
+    [self.totalResult setHidden:true];
+}
 
 -(void) displayQuestionStats: (NSMutableArray*) result
                   questionID: (NSString *) questionID
@@ -116,11 +134,19 @@ bool _endOfQuiz = false;
         [result addObject:[NSNumber numberWithInt:0]];
     }
     
-    self.resultA.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:1],[result objectAtIndex:0]];
-    self.resultB.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:2],[result objectAtIndex:0]];
-    self.resultC.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:3],[result objectAtIndex:0]];
-    self.resultD.text=[NSString stringWithFormat:@"%@/%@", [result objectAtIndex:4],[result objectAtIndex:0]];
-    self.timerDisplay.text=@"14/20 students chose the correct answer";
+    double total = [[result objectAtIndex:0] doubleValue];
+    double a = total == 0 ? 0 : 100.0*[[result objectAtIndex:1] doubleValue]/total;
+    double b = total == 0 ? 0 : 100.0*[[result objectAtIndex:2] doubleValue]/total;
+    double c = total == 0 ? 0 : 100.0*[[result objectAtIndex:3] doubleValue]/total;
+    double d = total == 0 ? 0 : 100.0*[[result objectAtIndex:4] doubleValue]/total;
+    
+    self.resultA.text=[NSString stringWithFormat:@"%.02f%%", a];
+    self.resultB.text=[NSString stringWithFormat:@"%.02f%%", b];
+    self.resultC.text=[NSString stringWithFormat:@"%.02f%%", c];
+    self.resultD.text=[NSString stringWithFormat:@"%.02f%%", d];
+    self.totalResult.text=[NSString stringWithFormat:@"Correct Answer: %@ out of %@.", [result objectAtIndex:[question.answer intValue]],[result objectAtIndex:0]];
+    [self showStatsText];
+    [self.totalResult setHidden:false];
     
     NSLog(@"correct answer:%@", correct_ans);
     
@@ -235,6 +261,7 @@ bool _endOfQuiz = false;
     }
     /////////////////////////
     
+    [self hideStatsText];
     // Only operate when the index and questions array is legit
     if (self.questions == nil || questionIndex < 0 || questionIndex >= [self.questions count]){
         return;
@@ -407,6 +434,7 @@ bool _endOfQuiz = false;
 
 - (void) resetToDefault
 {
+    [self hideStatsText];
     [self hideTimer];
     [self hideOptions];
     self.questionDisplay.text  = @"Quiz Finished. Please wait for the instructor.";
@@ -518,8 +546,13 @@ bool _endOfQuiz = false;
         NSString *questionID = [dict valueForKey:@"questionID"];
         for (int i = 0; i < [count count]; i++){
             NSLog(@"%@", count);
-            NSNumber *num =[count objectAtIndex:i];
-            [result addObject:num];
+            NSString *num =[count objectAtIndex:i];
+            NSLog(@"NUM:%@", num);
+            if ([num isKindOfClass:[NSNull class]]){
+                num = @"0";
+            }
+            NSNumber *n = [NSNumber numberWithInteger:[num integerValue]];
+            [result addObject:n];
         }
         [self displayQuestionStats:result questionID:questionID];
     }];
